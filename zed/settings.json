@@ -1,0 +1,299 @@
+{
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "default"
+      },
+      "type": "registry",
+    },
+  },
+  "agent": {
+    "dock": "right",
+    "default_model": {
+      "provider": "ollama",
+      "model": "qwen3-coder-next",
+    },
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "auto_discover": false,
+      "available_models": [
+        {
+          "name": "qwen3-coder-next",
+          "display_name": "Qwen3-Coder-Next 80B MoE (daily driver)",
+          "max_tokens": 16384,
+          "supports_tools": true,
+        },
+        {
+          "name": "qwen2.5-coder:7b",
+          "display_name": "Qwen2.5-Coder 7B (fast snippets)",
+          "max_tokens": 32768,
+          "supports_tools": true,
+        },
+      ],
+    },
+  },
+  "edit_predictions": {
+    "provider": "ollama",
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "model": "qwen2.5-coder:7b-base",
+      "prompt_format": "infer",
+      "max_output_tokens": 512,
+    },
+  },
+  "base_keymap": "Zed",
+  "diff_view_style": "split",
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "dock": "left",
+  },
+  "preview_tabs": {
+    "enable_preview_multibuffer_from_code_navigation": true,
+    "enable_preview_from_file_finder": true,
+  },
+  "file_finder": {
+    "file_icons": true, // Show/hide file icons
+    "modal_max_width": "small", // Horizontal size: small, medium, large, xlarge, full
+    "include_ignored": "smart", // gitignored files in results: all, indexed, smart
+  },
+  "line_indicator_format": "long",
+  "search": { "button": true },
+  "title_bar": {
+    "show_branch_status_icon": true, // Show git status on branch icon
+    "show_branch_name": true, // Show/hide branch name
+    "show_project_items": true, // Show/hide project host and name
+    "show_onboarding_banner": true, // Show/hide onboarding banners
+    "show_user_picture": true, // Show/hide user avatar
+    "show_user_menu": true, // Show/hide app user button
+    "show_sign_in": true, // Show/hide sign-in button
+    "show_menus": false, // Show/hide menus
+  },
+  "use_system_path_prompts": true,
+  // Active pane styling settings.
+  "active_pane_modifiers": {
+    // Inset border size of the active pane, in pixels.
+    "border_size": 0.5,
+    // Opacity of the inactive panes. 0 means transparent, 1 means opaque.
+    "inactive_opacity": 0.8,
+  },
+
+  // Layout mode of the bottom dock: contained, full, left_aligned, right_aligned
+  "bottom_dock_layout": "contained",
+
+  // Whether to resize all the panels in a dock when resizing the dock.
+  // Can be a combination of "left", "right" and "bottom".
+  "resize_all_panels_in_dock": ["left", "right", "bottom"],
+  "colorize_brackets": true,
+  "show_whitespaces": "selection",
+  "whitespace_map": {
+    // Which characters to show when `show_whitespaces` enabled
+    "space": "•",
+    "tab": "⟶", // use "→", for a shorter arrow
+  },
+  "gutter": {
+    "line_numbers": true, // Show/hide line numbers in the gutter.
+    "runnables": true, // Show/hide runnables buttons in the gutter.
+    "breakpoints": true, // Show/hide show breakpoints in the gutter.
+    "folds": true, // Show/hide show fold buttons in the gutter.
+    "min_line_number_digits": 4, // Reserve space for N digit line numbers
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true, // Show/hide inline blame
+      "delay_ms": 0, // Show after delay (ms)
+      "min_column": 0, // Minimum column to inline display blame
+      "padding": 7, // Padding between code and inline blame (em)
+      "show_commit_summary": true, // Show/hide commit summary
+    },
+    "hunk_style": "staged_hollow", // staged_hollow, unstaged_hollow
+  },
+  "relative_line_numbers": "enabled",
+  "unnecessary_code_fade": 0.3,
+  "vim": {
+    "use_smartcase_find": true,
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 2000,
+    },
+  },
+  "format_on_save": "on",
+  "auto_signature_help": true,
+  "show_signature_help_after_edits": true,
+  "current_line_highlight": "all",
+  "wrap_guides": [80, 120],
+  "seed_search_query_from_cursor": "selection",
+  "confirm_quit": true,
+  "cursor_blink": false,
+  "hover_popover_delay": 300,
+  // Scrollbar related settings
+  "scrollbar": {
+    // When to show the scrollbar in the editor (auto, system, always, never)
+    "show": "auto",
+    "cursors": true, // Show cursor positions in the scrollbar.
+    "git_diff": true, // Show git diff indicators in the scrollbar.
+    "search_results": true, // Show buffer search results in the scrollbar.
+    "selected_text": true, // Show selected text occurrences in the scrollbar.
+    "selected_symbol": true, // Show selected symbol occurrences in the scrollbar.
+    "diagnostics": "all", // Show diagnostics (none, error, warning, information, all)
+    "axes": {
+      "horizontal": true, // Show/hide the horizontal scrollbar
+      "vertical": true, // Show/hide the vertical scrollbar
+    },
+  },
+
+  // Minimap related settings
+  "minimap": {
+    "show": "always", // When to show (auto, always, never)
+    "display_in": "all_editors", // Where to show (active_editor, all_editors)
+    "thumb": "always", // When to show thumb (always, hover)
+    "thumb_border": "left_open", // Thumb border (left_open, right_open, full, none)
+    "max_width_columns": 80, // Maximum width of minimap
+    "current_line_highlight": "line", // Highlight current line (null, line, gutter)
+  },
+
+  // Control Editor scroll beyond the last line: off, one_page, vertical_scroll_margin
+  "scroll_beyond_last_line": "one_page",
+  // Lines to keep above/below the cursor when scrolling with the keyboard
+  "vertical_scroll_margin": 3,
+  // The number of characters to keep on either side when scrolling with the mouse
+  "horizontal_scroll_margin": 5,
+  // Scroll sensitivity multiplier
+  "scroll_sensitivity": 1.0,
+  // Scroll sensitivity multiplier for fast scrolling (hold alt while scrolling)
+  "fast_scroll_sensitivity": 4.0,
+  "toolbar": {
+    "code_actions": true,
+    "breadcrumbs": true,
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "max_tabs": null,
+  "tab_bar": {
+    "show": true, // Show/hide the tab bar
+    "show_nav_history_buttons": true, // Show/hide history buttons on tab bar
+    "show_tab_bar_buttons": true, // Show hide buttons (new, split, zoom)
+  },
+  "tabs": {
+    "git_status": true, // Color to show git status
+    "close_position": "right", // Close button position (left, right, hidden)
+    "show_close_button": "hover", // Close button shown (hover, always, hidden)
+    "file_icons": true, // Icon showing file type
+    // Show diagnostics in file icon (off, errors, all). Requires file_icons=true
+    "show_diagnostics": "errors",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Macchiato",
+  },
+  "soft_wrap": "editor_width",
+  "show_wrap_guides": true,
+  "vim_mode": false,
+  "status_bar": {
+    // Show/hide a button that displays the active buffer's language.
+    // Clicking the button brings up the language selector.
+    // Defaults to true.
+    "active_language_button": true,
+    // Show/hide a button that displays the cursor's position.
+    // Clicking the button brings up an input for jumping to a line and column.
+    // Defaults to true.
+    "cursor_position_button": true,
+    // Show/hide a button that displays the buffer's line-ending mode.
+    // Clicking the button brings up the line-ending selector.
+    // Defaults to false.
+    "line_endings_button": true,
+    // Show/hide a button that displays the buffer's character encoding.
+    // If set to "non_utf8", the button is hidden only for UTF-8 without BOM.
+    // Defaults to "non_utf8".
+    "active_encoding_button": "non_utf8",
+  },
+  "global_lsp_settings": {
+    // Show/hide the LSP button in the status bar.
+    // Activity from the LSP is still shown.
+    // Button is not shown if "enable_language_server" if false.
+    "button": true,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
+  "terminal": {
+    "shell": {
+      "program": "/usr/bin/fish",
+    },
+  },
+  "outline_panel": {
+    "button": true,
+    "default_width": 240,
+    "dock": "right",
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "indent_size": 20,
+    "auto_reveal_entries": true,
+    "auto_fold_dirs": true,
+    "indent_guides": {
+      "show": "always",
+    },
+    "scrollbar": {
+      "show": "auto",
+    },
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "DankShell Dark Transparent",
+  },
+  "restore_on_startup": "last_session",
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "Hack Nerd Font",
+
+  "auto_install_extensions": {
+    "ansible": true,
+    "catppuccin-icons": true,
+    "caddyfile": true,
+    "csv": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "duckyscript": true,
+    "env": true,
+    "fish": true,
+    "git-firefly": true,
+    "graphql": true,
+    "helm": true,
+    "html": true,
+    "ini": true,
+    "java": true,
+    "kdl": true,
+    "log": true,
+    "logstash": true,
+    "lua": true,
+    "make": true,
+    "nginx": true,
+    "nix": true,
+    "php": true,
+    "sql": true,
+    "ssh-config": true,
+    "terraform": true,
+    "toml": true,
+    "xml": true,
+    "zedokai": true,
+  },
+}
