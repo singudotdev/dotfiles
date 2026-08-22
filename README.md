@@ -39,7 +39,7 @@ Running it will:
 1. **Pre-flight checks** — refuses to run as root, refuses to run on non-Arch systems, and verifies that `niri`, `polkit`, an nvidia driver package, and the `multilib` repo are already present (these are expected to come from `archinstall`). Aborts with a list of what's missing if any check fails.
 2. **User confirmation** — prompts before proceeding with system changes.
 3. **System update & package install** — `pacman -Syu --needed` with the packages listed in `PACKAGES`.
-4. **Sudo configuration** — writes `/etc/sudoers.d/00_<user>` (passwordless-capable `ALL=(ALL) ALL` access) and `/etc/sudoers.d/10_defaults` (shorter timestamp timeout, `log_input`/`log_output` to `/var/log/sudo.log`), validating both with `visudo -c` before trusting them.
+4. **Sudo configuration** — writes `/etc/sudoers.d/00_<user>` (full, still password-gated `ALL=(ALL) ALL` access) and `/etc/sudoers.d/10_defaults` (shorter timestamp timeout, `log_input`/`log_output` to `/var/log/sudo.log`), validating both with `visudo -c` before trusting them.
 5. **Flatpak applications** — adds the Flathub remote if missing, then installs each app in `FLATPAKS`, skipping ones already installed.
 6. **Install Brave Origin** — clones `brave-origin-bin` from the AUR and builds/installs it with `makepkg -si` (shows the `PKGBUILD` for review first). No AUR helper is used or required.
 7. **Install DankMaterialShell** — `curl -fsSL https://install.danklinux.com \| sh`.
