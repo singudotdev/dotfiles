@@ -5,7 +5,7 @@
 Reclaims disk space after an upgrade by clearing the pacman/Flatpak caches and removing orphaned packages.
 
 > [!NOTE]
-> `init.sh` symlinks the script to `~/.local/bin/clean-pkgs` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `clean-pkgs`; the `supgrade` fish function (see [`fish/functions/supgrade.fish`](../fish/functions/supgrade.fish)) runs it automatically after `upgrade-aur` on every upgrade.
+> `init.sh` symlinks the script to `~/.local/bin/clean-pkgs` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `clean-pkgs`; the [`supgrade`](./fish-functions.md) fish function runs it automatically after `upgrade-aur` on every upgrade.
 
 ## Usage
 

@@ -7,7 +7,7 @@ The packages in `AUR_PACKAGES` (see step 6 of [`init.sh`](./init.md)) are instal
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
 > [!NOTE]
-> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `upgrade-aur`. The `supgrade` fish function (see [`fish/functions/supgrade.fish`](../fish/functions/supgrade.fish)) runs it together with `pacman -Syu`, `flatpak update`, and `clean-pkgs`.
+> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `upgrade-aur`. The [`supgrade`](./fish-functions.md) fish function runs it together with `pacman -Syu`, `flatpak update`, and `clean-pkgs`.
 
 ## Usage
 

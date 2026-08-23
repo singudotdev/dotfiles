@@ -49,6 +49,10 @@ cd dotfiles
 | `scripts/upgrade-aur.sh` | On-demand checker/rebuilder for AUR packages installed outside an AUR helper | [docs/upgrade-aur.md](./docs/upgrade-aur.md) |
 | `scripts/clean-pkgs.sh` | Clears the pacman/Flatpak caches and removes orphaned packages | [docs/clean-pkgs.md](./docs/clean-pkgs.md) |
 
+## Fish functions
+
+The `fish` config also adds a few commands to your shell (aliases like `cat`/`ll`, plus `supgrade` for a one-shot system upgrade). See [docs/fish-functions.md](./docs/fish-functions.md) for the full list.
+
 ## License
 [MIT](./LICENSE) — feel free to reuse or fork anything here.
 
