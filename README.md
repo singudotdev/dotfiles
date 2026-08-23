@@ -28,11 +28,11 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`zed`](./zed) | Config for the [Zed](https://zed.dev/) editor |
 | [`init.sh`](./init.sh) | Bootstrap script: installs packages and symlinks configs into place |
 | [`mount.sh`](./mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
-| [`update-brave-origin.sh`](./update-brave-origin.sh) | On-demand checker/rebuilder for the `brave-origin-bin` AUR package |
+| [`update-aur-packages.sh`](./update-aur-packages.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
 
 ## What `init.sh` does
 
-`init.sh` is meant to be run **once**, right after a fresh [archinstall](https://wiki.archlinux.org/title/Archinstall) with [niri](https://github.com/YaLTeR/niri) as the compositor. It is not meant to be re-run on an already-configured system. It's not interactive by design beyond a single confirmation prompt — what gets installed/linked is controlled by config arrays (`PACKAGES`, `FLATPAKS`, `DOTFILE_LINKS`, `MODELS`, etc.) at the top of the script.
+`init.sh` is meant to be run **once**, right after a fresh [archinstall](https://wiki.archlinux.org/title/Archinstall) with [niri](https://github.com/YaLTeR/niri) as the compositor. It is not meant to be re-run on an already-configured system. It's not interactive by design beyond a single confirmation prompt — what gets installed/linked is controlled by config arrays (`PACKAGES`, `FLATPAKS`, `AUR_PACKAGES`, `DOTFILE_LINKS`, `MODELS`, etc.) at the top of the script.
 
 Running it will:
 
@@ -41,7 +41,9 @@ Running it will:
 3. **System update & package install** — `pacman -Syu --needed` with the packages listed in `PACKAGES`.
 4. **Sudo configuration** — writes `/etc/sudoers.d/00_<user>` (full, still password-gated `ALL=(ALL) ALL` access) and `/etc/sudoers.d/10_defaults` (shorter timestamp timeout, `log_input`/`log_output` to `/var/log/sudo.log`), validating both with `visudo -c` before trusting them.
 5. **Flatpak applications** — adds the Flathub remote if missing, then installs each app in `FLATPAKS`, skipping ones already installed.
-6. **Install Brave Origin** — clones `brave-origin-bin` from the AUR and builds/installs it with `makepkg -si` (shows the `PKGBUILD` for review first). No AUR helper is used or required.
+6. **Install AUR packages** — clones each package in `AUR_PACKAGES` from the AUR and builds/installs it with `makepkg -si`. No AUR helper is used or required:
+    - `brave-origin-bin` — de-Googled Brave build
+    - `voltius-bin` — local-first SSH/SFTP/Serial client with E2EE sync and plugins, no account required
 7. **Install DankMaterialShell** — `curl -fsSL https://install.danklinux.com \| sh`.
 8. **Symlink configuration files** — links each entry in `DOTFILE_LINKS` from the repo into `$HOME` (see table below). Any existing file/symlink at the target is backed up (`<target>.bak.<timestamp>`) instead of deleted.
 9. **Disable Bluetooth auto-enable** — sets `AutoEnable=false` in `/etc/bluetooth/main.conf`, if Bluetooth is installed.
@@ -85,12 +87,14 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 > [!NOTE]
 > Run `mount.sh` as your normal user, not with `sudo`. It calls `sudo` itself for the individual steps that need root (creating the mount point, backing up and editing `/etc/fstab`, reloading systemd, mounting), so the mount point ends up owned by you instead of root.
 
-## What `update-brave-origin.sh` does
+## What `update-aur-packages.sh` does
 
-Brave Origin is installed from the AUR (see step 6 of `init.sh`) rather than through an AUR helper, so nothing auto-updates it. `update-brave-origin.sh` is a manual, on-demand replacement for that: run it whenever you want to check for a new release. Running it will:
+The packages in `AUR_PACKAGES` (see step 6 of `init.sh`) are installed from the AUR rather than through an AUR helper, so nothing auto-updates them. `update-aur-packages.sh` is a manual, on-demand replacement for that: run it whenever you want to check for new releases. It has its own `PACKAGES` array (defaults to the same packages as `init.sh`'s `AUR_PACKAGES`) and, for each one:
 
-1. **Check versions** — compares the installed `brave-origin-bin` version (`pacman -Q`) against the latest version on the AUR (via the AUR RPC API). Exits immediately if they already match.
-2. **Rebuild if newer** — if an update is available, clones the AUR package fresh, shows the `PKGBUILD` for review, then builds and installs it with `makepkg -si` (prompting for your sudo password as usual).
+1. **Checks versions** — compares the installed version (`pacman -Q`) against the latest version on the AUR (via the AUR RPC API). Skips to the next package if they already match, or if the package isn't installed.
+2. **Rebuilds if newer** — if an update is available, clones the AUR package fresh, shows the `PKGBUILD` for review, then builds and installs it with `makepkg -si` (prompting for your sudo password as usual).
+
+Once all packages are processed, it removes any orphaned dependencies left behind by the rebuilds.
 
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
@@ -122,12 +126,12 @@ If you have a new storage device, run this to mount it:
 ./mount.sh
 ```
 
-### Checking for Brave Origin updates with `update-brave-origin.sh`
+### Checking for AUR package updates with `update-aur-packages.sh`
 
-Run this whenever you want to check for (and install) a newer Brave Origin release:
+Run this whenever you want to check for (and install) newer releases of the AUR packages:
 
 ```bash
-./update-brave-origin.sh
+./update-aur-packages.sh
 ```
 
 ## License

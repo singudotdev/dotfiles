@@ -29,6 +29,12 @@ FLATPAKS=(
     com.vysp3r.ProtonPlus
 )
 
+# AUR packages to build and install with makepkg (no AUR helper required)
+AUR_PACKAGES=(
+    brave-origin-bin
+    voltius-bin
+)
+
 # Dotfiles to symlink, one per line: "path in this repo:target under $HOME"
 DOTFILE_LINKS=(
     "DankMaterialShell:.config/DankMaterialShell"
@@ -145,15 +151,18 @@ done
 ok "Flatpaks processed"
 
 # ============================================================
-# 4. Brave Origin
+# 4. AUR packages
 # ============================================================
-step "Installing Brave Origin"
-git clone https://aur.archlinux.org/brave-origin-bin.git /tmp/brave-origin-bin || warn "Failed to clone brave-origin-bin from AUR"
-cd /tmp/brave-origin-bin
-makepkg -si --noconfirm --needed || warn "Failed to install brave-origin-bin"
-cd ~
-rm -rf /tmp/brave-origin-bin
-ok "Brave Origin installed"
+step "Installing AUR packages"
+for pkg in "${AUR_PACKAGES[@]}"; do
+    log "Building $pkg..."
+    build_dir="/tmp/${pkg}"
+    rm -rf "$build_dir"
+    git clone "https://aur.archlinux.org/${pkg}.git" "$build_dir" || { warn "Failed to clone $pkg from AUR"; continue; }
+    (cd "$build_dir" && makepkg -si --noconfirm --needed) || warn "Failed to install $pkg"
+    rm -rf "$build_dir"
+done
+ok "AUR packages processed"
 
 # ============================================================
 # 5. DankMaterialShell
