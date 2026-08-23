@@ -61,7 +61,9 @@ MODELS=(
     "qwen2.5-coder:7b"        # Fast snippets / chat
 )
 
-# --- Pre-flight checks ---
+# ============================================================
+# Pre-flight checks
+# ============================================================
 if [[ $EUID -eq 0 ]]; then
     echo "ERROR: Do not run this script as root. Run as your normal user."
     exit 1
@@ -96,7 +98,9 @@ fi
 read -rp "This script will update the system, install packages, configure dotfiles, and set up services. Continue? (y/n): " confirm
 [[ "$confirm" =~ ^[yY]$ ]] || { echo "Cancelled."; exit 0; }
 
-# --- Helpers ---
+# ============================================================
+# Helpers
+# ============================================================
 log()  { echo -e "\033[1;34m[INFO]\033[0m  $*"; }
 ok()   { echo -e "\033[1;32m[OK]\033[0m    $*"; }
 warn() { echo -e "\033[1;33m[WARN]\033[0m  $*"; }
