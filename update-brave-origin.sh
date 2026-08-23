@@ -35,8 +35,20 @@ log "Update available, rebuilding $PKG..."
 rm -rf "$BUILD_DIR"
 git clone https://aur.archlinux.org/${PKG}.git "$BUILD_DIR"
 cd "$BUILD_DIR"
-less PKGBUILD
+
+# --- With this ---
+echo ""
+log "Please review the PKGBUILD below:"
+echo "----------------------------------------"
+bat PKGBUILD
+echo "----------------------------------------"
+echo ""
+read -rp "Proceed with build and install? [y/N] " confirm
+[[ "$confirm" =~ ^[Yy]$ ]] || fail "Aborted by user."
+
 makepkg -si --noconfirm --needed
+# ----------------------------
+
 cd ~
 rm -rf "$BUILD_DIR"
 ok "$PKG updated to $aur_ver"
