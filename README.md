@@ -51,7 +51,6 @@ Running it will:
 13. **Pull Ollama models** — pulls each model in `MODELS`:
     - `qwen2.5-coder:7b-base` — autocomplete / inline predictions (Zed edit_predictions)
     - `qwen2.5-coder:7b` — fast snippets chat model (Zed agent panel)
-    - `qwen3-coder-next` — default Zed agent model / daily driver (Zed agent panel)
 14. **Reboot** — after a 5-second countdown.
 
 Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama model pulls, the Ollama service start) warn and continue on failure rather than aborting the whole script; package installation, sudoers setup, and the Ollama install itself are treated as fatal.
