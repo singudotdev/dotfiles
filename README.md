@@ -100,7 +100,7 @@ Once all packages are processed, it removes any orphaned dependencies left behin
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
 > [!NOTE]
-> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur.sh`, so after setup it's callable from anywhere as `upgrade-aur.sh`. The `sysupgrade` fish function (see [`fish/functions/sysupgrade.fish`](./fish/functions/sysupgrade.fish)) runs it together with `pacman -Syu` and `flatpak update`.
+> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur.sh`, so after setup it's callable from anywhere as `upgrade-aur.sh`. The `supgrade` fish function (see [`fish/functions/supgrade.fish`](./fish/functions/supgrade.fish)) runs it together with `pacman -Syu` and `flatpak update`.
 
 ## Usage
 
