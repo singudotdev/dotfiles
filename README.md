@@ -73,8 +73,8 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 | `zed/` | `~/.config/zed` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `fetch/` | `~/.config/fetch` |
-| `upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
-| `clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
+| `scripts/upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
+| `scripts/clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
 
 ## What `mount.sh` does
 
