@@ -76,12 +76,4 @@ for pkg in "${PACKAGES[@]}"; do
     update_package "$pkg"
 done
 
-# makepkg -si can pull in build/runtime deps that are no longer needed by
-# anything once the rebuilds are done, so sweep them up here.
-orphans=$(pacman -Qdtq 2>/dev/null || true)
-if [ -n "$orphans" ]; then
-    log "Removing orphaned dependencies..."
-    sudo pacman -Rns --noconfirm $orphans || true
-fi
-
 ok "AUR packages processed"

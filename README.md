@@ -30,7 +30,7 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`scripts`](./scripts) | On-demand helper scripts (drive mounting, AUR updates) |
 | [`scripts/mount.sh`](./scripts/mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
 | [`scripts/upgrade-aur.sh`](./scripts/upgrade-aur.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
-| [`scripts/clean-pkgs.sh`](./scripts/clean-pkgs.sh) | Clears the pacman/Flatpak/paru caches and removes orphaned packages |
+| [`scripts/clean-pkgs.sh`](./scripts/clean-pkgs.sh) | Clears the pacman/Flatpak caches and removes orphaned packages |
 
 ## What `init.sh` does
 
@@ -98,8 +98,6 @@ The packages in `AUR_PACKAGES` (see step 6 of `init.sh`) are installed from the 
 1. **Checks versions** — compares the installed version (`pacman -Q`) against the latest version on the AUR (via the AUR RPC API). Skips to the next package if they already match, or if the package isn't installed.
 2. **Rebuilds if newer** — if an update is available, clones the AUR package fresh, shows the `PKGBUILD` for review, then builds and installs it with `makepkg -si` (prompting for your sudo password as usual).
 
-Once all packages are processed, it removes any orphaned dependencies left behind by the rebuilds.
-
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
 > [!NOTE]
@@ -113,11 +111,10 @@ It deliberately doesn't run unattended (no systemd timer, no passwordless sudo):
 2. **Clean Flatpak** — `flatpak uninstall --unused` to drop runtimes nothing depends on anymore.
 3. **Remove stuck partial downloads** — deletes any leftover `download-*` directories in the pacman cache.
 4. **Clean the pacman cache** — `pacman -Sc` to drop cached versions of packages that are no longer installed.
-5. **Remove orphaned packages** — uninstalls packages nothing depends on anymore (`pacman -Qtdq`).
-6. **Clean paru's AUR build cache** — `paru -Scc`.
+5. **Remove orphaned packages** — uninstalls packages nothing depends on anymore (`pacman -Qtdq`), including any left behind by `upgrade-aur.sh`'s AUR rebuilds.
 
 > [!NOTE]
-> Step 6 requires [`paru`](https://github.com/Morganamilo/paru), an AUR helper. `init.sh` doesn't install one (it builds `AUR_PACKAGES` directly with `makepkg`, see step 6 of `init.sh`), so install `paru` yourself first if you want this step to succeed. `init.sh` symlinks the script to `~/.local/bin/clean-pkgs` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `clean-pkgs`; the `supgrade` fish function runs it automatically after every upgrade.
+> `init.sh` symlinks the script to `~/.local/bin/clean-pkgs` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `clean-pkgs`; the `supgrade` fish function runs it automatically after `upgrade-aur` on every upgrade.
 
 ## Usage
 

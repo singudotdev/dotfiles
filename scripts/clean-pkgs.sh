@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# Clears the pacman, Flatpak, and paru caches, then removes orphaned
-# packages. Run manually after an upgrade to reclaim disk space.
+# Clears the pacman and Flatpak caches, then removes orphaned packages.
+# Run manually after an upgrade to reclaim disk space.
 
 echo "=== Starting Fully Automated Package Cleanup ==="
 
@@ -41,13 +41,6 @@ else
         echo "Orphan removal failed or prompted. Trying force pipe..."
         echo "y" | sudo pacman -Rns $ORPHANS
     fi
-fi
-
-echo "Cleaning Paru AUR build cache..."
-# Retry non-interactively in case --noconfirm didn't suppress a prompt.
-if ! paru -Scc --noconfirm; then
-    echo "Paru clean failed or prompted. Trying force pipe..."
-    echo "y" | paru -Scc
 fi
 
 echo "=== Cleanup Complete ==="
