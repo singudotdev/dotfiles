@@ -43,6 +43,7 @@ DOTFILE_LINKS=(
     "zed:.config/zed"
     "starship/starship.toml:.config/starship.toml"
     "fetch:.config/fetch"
+    "update-aur-packages.sh:.local/bin/update-aur-packages.sh"
 )
 
 GIT_EMAIL="contact@singu.dev"
