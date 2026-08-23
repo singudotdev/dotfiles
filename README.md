@@ -28,7 +28,7 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`zed`](./zed) | Config for the [Zed](https://zed.dev/) editor |
 | [`init.sh`](./init.sh) | Bootstrap script: installs packages and symlinks configs into place |
 | [`mount.sh`](./mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
-| [`update-aur-packages.sh`](./update-aur-packages.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
+| [`upgrade-aur.sh`](./upgrade-aur.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
 
 ## What `init.sh` does
 
@@ -71,7 +71,7 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 | `zed/` | `~/.config/zed` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `fetch/` | `~/.config/fetch` |
-| `update-aur-packages.sh` | `~/.local/bin/update-aur-packages.sh` |
+| `upgrade-aur.sh` | `~/.local/bin/upgrade-aur.sh` |
 
 ## What `mount.sh` does
 
@@ -88,9 +88,9 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 > [!NOTE]
 > Run `mount.sh` as your normal user, not with `sudo`. It calls `sudo` itself for the individual steps that need root (creating the mount point, backing up and editing `/etc/fstab`, reloading systemd, mounting), so the mount point ends up owned by you instead of root.
 
-## What `update-aur-packages.sh` does
+## What `upgrade-aur.sh` does
 
-The packages in `AUR_PACKAGES` (see step 6 of `init.sh`) are installed from the AUR rather than through an AUR helper, so nothing auto-updates them. `update-aur-packages.sh` is a manual, on-demand replacement for that: run it whenever you want to check for new releases. It has its own `PACKAGES` array (defaults to the same packages as `init.sh`'s `AUR_PACKAGES`) and, for each one:
+The packages in `AUR_PACKAGES` (see step 6 of `init.sh`) are installed from the AUR rather than through an AUR helper, so nothing auto-updates them. `upgrade-aur.sh` is a manual, on-demand replacement for that: run it whenever you want to check for new releases. It has its own `PACKAGES` array (defaults to the same packages as `init.sh`'s `AUR_PACKAGES`) and, for each one:
 
 1. **Checks versions** — compares the installed version (`pacman -Q`) against the latest version on the AUR (via the AUR RPC API). Skips to the next package if they already match, or if the package isn't installed.
 2. **Rebuilds if newer** — if an update is available, clones the AUR package fresh, shows the `PKGBUILD` for review, then builds and installs it with `makepkg -si` (prompting for your sudo password as usual).
@@ -100,7 +100,7 @@ Once all packages are processed, it removes any orphaned dependencies left behin
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
 > [!NOTE]
-> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/update-aur-packages.sh`, so after setup it's callable from anywhere as `update-aur-packages.sh`. The `sysupgrade` fish function (see [`fish/functions/sysupgrade.fish`](./fish/functions/sysupgrade.fish)) runs it together with `pacman -Syu` and `flatpak update`.
+> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur.sh`, so after setup it's callable from anywhere as `upgrade-aur.sh`. The `sysupgrade` fish function (see [`fish/functions/sysupgrade.fish`](./fish/functions/sysupgrade.fish)) runs it together with `pacman -Syu` and `flatpak update`.
 
 ## Usage
 
@@ -127,12 +127,12 @@ If you have a new storage device, run this to mount it:
 ./mount.sh
 ```
 
-### Checking for AUR package updates with `update-aur-packages.sh`
+### Checking for AUR package updates with `upgrade-aur.sh`
 
 Run this whenever you want to check for (and install) newer releases of the AUR packages:
 
 ```bash
-./update-aur-packages.sh
+./upgrade-aur.sh
 ```
 
 ## License
