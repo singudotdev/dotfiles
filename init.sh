@@ -31,7 +31,6 @@ FLATPAKS=(
 # AUR packages to build and install with makepkg (no AUR helper required)
 AUR_PACKAGES=(
     brave-origin-bin
-    voltius-bin
 )
 
 # Dotfiles to symlink, one per line: "path in this repo:target under $HOME"

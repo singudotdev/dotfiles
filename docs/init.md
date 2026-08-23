@@ -28,7 +28,6 @@ cd dotfiles
 5. **Flatpak applications** — adds the Flathub remote if missing, then installs each app in `FLATPAKS`, skipping ones already installed.
 6. **Install AUR packages** — clones each package in `AUR_PACKAGES` from the AUR and builds/installs it with `makepkg -si`. No AUR helper is used or required:
     - `brave-origin-bin` — de-Googled Brave build
-    - `voltius-bin` — local-first SSH/SFTP/Serial client with E2EE sync and plugins, no account required
 7. **Install DankMaterialShell** — `curl -fsSL https://install.danklinux.com \| sh`.
 8. **Symlink configuration files** — links each entry in `DOTFILE_LINKS` from the repo into `$HOME` (see table below). Any existing file/symlink at the target is backed up (`<target>.bak.<timestamp>`) instead of deleted.
 9. **Disable Bluetooth auto-enable** — sets `AutoEnable=false` in `/etc/bluetooth/main.conf`, if Bluetooth is installed.

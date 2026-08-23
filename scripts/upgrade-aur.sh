@@ -6,7 +6,6 @@ set -euo pipefail
 
 PACKAGES=(
     brave-origin-bin
-    voltius-bin
 )
 
 log()  { echo -e "\033[1;34m[INFO]\033[0m  $*"; }
