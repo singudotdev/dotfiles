@@ -52,7 +52,6 @@ OLLAMA_KEEP_ALIVE=10m
 MODELS=(
     "qwen2.5-coder:7b-base"   # Autocomplete / inline predictions
     "qwen2.5-coder:7b"        # Fast snippets / chat
-    "qwen3-coder-next"        # Daily driver / default agent
 )
 
 # --- Pre-flight checks ---
