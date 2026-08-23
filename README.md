@@ -27,8 +27,9 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`starship`](./starship) | Config for the [Starship](https://starship.rs/) shell prompt |
 | [`zed`](./zed) | Config for the [Zed](https://zed.dev/) editor |
 | [`init.sh`](./init.sh) | Bootstrap script: installs packages and symlinks configs into place |
-| [`mount.sh`](./mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
-| [`upgrade-aur.sh`](./upgrade-aur.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
+| [`scripts`](./scripts) | On-demand helper scripts (drive mounting, AUR updates) |
+| [`scripts/mount.sh`](./scripts/mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
+| [`scripts/upgrade-aur.sh`](./scripts/upgrade-aur.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
 
 ## What `init.sh` does
 
@@ -124,7 +125,7 @@ cd dotfiles
 If you have a new storage device, run this to mount it:
 
 ```bash
-./mount.sh
+./scripts/mount.sh
 ```
 
 ### Checking for AUR package updates with `upgrade-aur.sh`
@@ -132,7 +133,7 @@ If you have a new storage device, run this to mount it:
 Run this whenever you want to check for (and install) newer releases of the AUR packages:
 
 ```bash
-./upgrade-aur.sh
+./scripts/upgrade-aur.sh
 ```
 
 ## License
