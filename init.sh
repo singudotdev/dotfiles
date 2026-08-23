@@ -22,7 +22,6 @@ PACKAGES=(
 # Flatpak applications (Flathub app IDs)
 FLATPAKS=(
     com.github.tchx84.Flatseal
-    com.termius.Termius
     im.riot.Riot
     org.kde.kalk
     org.telegram.desktop
