@@ -30,6 +30,7 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`scripts`](./scripts) | On-demand helper scripts (drive mounting, AUR updates) |
 | [`scripts/mount.sh`](./scripts/mount.sh) | Interactive helper to add a storage device to `/etc/fstab` |
 | [`scripts/upgrade-aur.sh`](./scripts/upgrade-aur.sh) | On-demand checker/rebuilder for AUR packages installed outside an AUR helper |
+| [`scripts/clean-pkgs.sh`](./scripts/clean-pkgs.sh) | Clears the pacman/Flatpak/paru caches and removes orphaned packages |
 
 ## What `init.sh` does
 
@@ -72,7 +73,8 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 | `zed/` | `~/.config/zed` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `fetch/` | `~/.config/fetch` |
-| `upgrade-aur.sh` | `~/.local/bin/upgrade-aur.sh` |
+| `upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
+| `clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
 
 ## What `mount.sh` does
 
@@ -101,7 +103,21 @@ Once all packages are processed, it removes any orphaned dependencies left behin
 It deliberately doesn't run unattended (no systemd timer, no passwordless sudo): automating the final `pacman -U` step would need a NOPASSWD sudoers rule broad enough to double as a privilege-escalation path, since `pacman -U` runs the package's install scriptlets as root regardless of which file is handed to it.
 
 > [!NOTE]
-> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur.sh`, so after setup it's callable from anywhere as `upgrade-aur.sh`. The `supgrade` fish function (see [`fish/functions/supgrade.fish`](./fish/functions/supgrade.fish)) runs it together with `pacman -Syu` and `flatpak update`.
+> Requires `jq`, which is already installed by `init.sh`'s package list. `init.sh` also symlinks it to `~/.local/bin/upgrade-aur` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `upgrade-aur`. The `supgrade` fish function (see [`fish/functions/supgrade.fish`](./fish/functions/supgrade.fish)) runs it together with `pacman -Syu`, `flatpak update`, and `clean-pkgs`.
+
+## What `clean-pkgs.sh` does
+
+`clean-pkgs.sh` reclaims disk space after an upgrade. Running it will:
+
+1. **Recreate the pacman cache dir** — if `/var/cache/pacman/pkg` is missing, recreates it with the right ownership/permissions.
+2. **Clean Flatpak** — `flatpak uninstall --unused` to drop runtimes nothing depends on anymore.
+3. **Remove stuck partial downloads** — deletes any leftover `download-*` directories in the pacman cache.
+4. **Clean the pacman cache** — `pacman -Sc` to drop cached versions of packages that are no longer installed.
+5. **Remove orphaned packages** — uninstalls packages nothing depends on anymore (`pacman -Qtdq`).
+6. **Clean paru's AUR build cache** — `paru -Scc`.
+
+> [!NOTE]
+> Step 6 requires [`paru`](https://github.com/Morganamilo/paru), an AUR helper. `init.sh` doesn't install one (it builds `AUR_PACKAGES` directly with `makepkg`, see step 6 of `init.sh`), so install `paru` yourself first if you want this step to succeed. `init.sh` symlinks the script to `~/.local/bin/clean-pkgs` (no `.sh`, so it behaves like a regular binary on `PATH`), so after setup it's callable from anywhere as `clean-pkgs`; the `supgrade` fish function runs it automatically after every upgrade.
 
 ## Usage
 
@@ -134,6 +150,14 @@ Run this whenever you want to check for (and install) newer releases of the AUR 
 
 ```bash
 ./scripts/upgrade-aur.sh
+```
+
+### Reclaiming disk space with `clean-pkgs.sh`
+
+Run this after an upgrade to clear caches and remove orphaned packages:
+
+```bash
+./scripts/clean-pkgs.sh
 ```
 
 ## License
