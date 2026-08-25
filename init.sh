@@ -57,9 +57,9 @@ OLLAMA_FLASH_ATTENTION=1
 OLLAMA_KEEP_ALIVE=10m
 
 MODELS=(
-    "qwen3.5:4b"              # General purpose
-    "qwen2.5-coder:7b-base"   # Autocomplete / inline predictions
-    "qwen2.5-coder:7b"        # Fast snippets / chat
+    "qwen3.5:4b"                # General purpose
+    "qwen3-coder-next:latest"   # Snippets / code generation
+    "qwen2.5-coder:14b"         # Autocomplete / inline predictions
 )
 
 # ============================================================

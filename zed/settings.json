@@ -2,7 +2,7 @@
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
-        "mode": "default",
+        "mode": "auto",
       },
       "type": "registry",
     },
@@ -11,13 +11,13 @@
     "default_profile": "write",
     "inline_assistant_model": {
       "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
+      "model": "qwen2.5-coder:14b",
       "enable_thinking": false,
     },
     "dock": "right",
     "default_model": {
       "provider": "ollama",
-      "model": "qwen3.5:4b",
+      "model": "qwen3-coder-next",
     },
   },
   "language_models": {
@@ -26,8 +26,8 @@
       "auto_discover": false,
       "available_models": [
         {
-          "name": "qwen2.5-coder:7b",
-          "display_name": "Qwen2.5-Coder 7B (fast snippets)",
+          "name": "qwen3-coder-next",
+          "display_name": "Qwen Coder Next",
           "max_tokens": 32768,
           "supports_tools": true,
         },
@@ -44,7 +44,7 @@
     "provider": "ollama",
     "ollama": {
       "api_url": "http://localhost:11434",
-      "model": "qwen2.5-coder:7b-base",
+      "model": "qwen2.5-coder:14b",
       "prompt_format": "qwen",
       "max_output_tokens": 64,
     },
