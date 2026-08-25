@@ -8,6 +8,11 @@
     },
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b-base",
+      "enable_thinking": false,
+    },
     "dock": "right",
     "default_model": {
       "provider": "ollama",
