@@ -35,6 +35,7 @@ cd dotfiles
 11. **Install Claude Code** — `curl -fsSL https://claude.ai/install.sh \| sh`.
 12. **Install and configure Ollama** — installs via `curl -fsSL https://ollama.com/install.sh \| sh`, sets ownership/permissions on `/var/lib/ollama`, writes a systemd drop-in (`/etc/systemd/system/ollama.service.d/override.conf`) from `OLLAMA_NUM_CTX`/`OLLAMA_FLASH_ATTENTION`/`OLLAMA_KEEP_ALIVE`, then enables and starts the service.
 13. **Pull Ollama models** — pulls each model in `MODELS`:
+    - `qwen3.5:4b` — general purpose (Zed agent panel default)
     - `qwen2.5-coder:7b-base` — autocomplete / inline predictions (Zed edit_predictions)
     - `qwen2.5-coder:7b` — fast snippets chat model (Zed agent panel)
 14. **Reboot** — after a 5-second countdown.

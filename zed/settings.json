@@ -8,15 +8,16 @@
     },
   },
   "agent": {
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "ollama",
-      "model": "qwen2.5-coder:7b-base",
+      "model": "qwen2.5-coder:7b",
       "enable_thinking": false,
     },
     "dock": "right",
     "default_model": {
       "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
+      "model": "qwen3.5:4b",
     },
   },
   "language_models": {
@@ -30,6 +31,12 @@
           "max_tokens": 32768,
           "supports_tools": true,
         },
+        {
+          "name": "qwen3.5:4b",
+          "display_name": "Qwen3.5 4B (general)",
+          "max_tokens": 32768,
+          "supports_tools": true,
+        },
       ],
     },
   },
@@ -38,8 +45,8 @@
     "ollama": {
       "api_url": "http://localhost:11434",
       "model": "qwen2.5-coder:7b-base",
-      "prompt_format": "infer",
-      "max_output_tokens": 512,
+      "prompt_format": "qwen",
+      "max_output_tokens": 64,
     },
   },
   "base_keymap": "Zed",
