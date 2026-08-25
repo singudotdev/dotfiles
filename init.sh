@@ -44,6 +44,7 @@ DOTFILE_LINKS=(
     "fetch:.config/fetch"
     "scripts/upgrade-aur.sh:.local/bin/upgrade-aur"
     "scripts/clean-pkgs.sh:.local/bin/clean-pkgs"
+    "scripts/fix-zed-transparency.sh:.local/bin/fix-zed-transparency"
 )
 
 GIT_EMAIL="contact@singu.dev"

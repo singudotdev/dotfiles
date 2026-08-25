@@ -48,6 +48,7 @@ cd dotfiles
 | `scripts/mount.sh` | Interactive helper to add a storage device to `/etc/fstab` | [docs/mount.md](./docs/mount.md) |
 | `scripts/upgrade-aur.sh` | On-demand checker/rebuilder for AUR packages installed outside an AUR helper | [docs/upgrade-aur.md](./docs/upgrade-aur.md) |
 | `scripts/clean-pkgs.sh` | Clears the pacman/Flatpak caches and removes orphaned packages | [docs/clean-pkgs.md](./docs/clean-pkgs.md) |
+| `scripts/fix-zed-transparency.sh` | Reapplies Zed's transparency tuning after matugen resets it on a wallpaper change | [docs/fix-zed-transparency.md](./docs/fix-zed-transparency.md) |
 
 ## Fish functions
 

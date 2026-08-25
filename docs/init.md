@@ -57,3 +57,4 @@ Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama mod
 | `fetch/` | `~/.config/fetch` |
 | `scripts/upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
 | `scripts/clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
+| `scripts/fix-zed-transparency.sh` | `~/.local/bin/fix-zed-transparency` |
