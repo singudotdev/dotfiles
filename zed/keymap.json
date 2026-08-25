@@ -7,31 +7,10 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-g": "git_panel::Toggle",
+      "ctrl-?": "agent::Toggle",
     },
   },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
-    },
-  },
-  {
-    "bindings": {
-      "ctrl-t": "terminal_panel::Toggle"
-    }
-  },
-  {
-    "context": "Workspace",
-    "unbind": {
-      "ctrl-`": "terminal_panel::Toggle"
-    }
-  },
-  {
-    "bindings": {
-      "ctrl-g": "git_panel::Toggle"
-    }
-  }
 ]

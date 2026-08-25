@@ -2,7 +2,7 @@
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
-        "mode": "default"
+        "mode": "default",
       },
       "type": "registry",
     },
@@ -11,7 +11,7 @@
     "dock": "right",
     "default_model": {
       "provider": "ollama",
-      "model": "qwen3-coder-next",
+      "model": "qwen2.5-coder:7b",
     },
   },
   "language_models": {
@@ -19,12 +19,6 @@
       "api_url": "http://localhost:11434",
       "auto_discover": false,
       "available_models": [
-        {
-          "name": "qwen3-coder-next",
-          "display_name": "Qwen3-Coder-Next 80B MoE (daily driver)",
-          "max_tokens": 16384,
-          "supports_tools": true,
-        },
         {
           "name": "qwen2.5-coder:7b",
           "display_name": "Qwen2.5-Coder 7B (fast snippets)",
