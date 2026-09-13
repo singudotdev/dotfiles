@@ -54,6 +54,7 @@
   "useSystemSoundTheme": true,
   "terminalsAlwaysDark": true,
   "matugenTemplateNeovim": true,
+  "lockScreenNotificationMode": 1,
   "notificationShowTimeoutBar": true,
   "osdPowerProfileEnabled": true,
   "screenPreferences": {
@@ -189,5 +190,5 @@
       "trigger": "qrg"
     }
   },
-  "configVersion": 17
+  "configVersion": 18
 }

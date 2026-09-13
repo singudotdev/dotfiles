@@ -205,7 +205,20 @@ for entry in "${DOTFILE_LINKS[@]}"; do
 done
 
 # ============================================================
-# 7. Bluetooth
+# 7. GNOME Keyring
+# ============================================================
+step "Disabling GNOME Keyring's systemd socket"
+# ly's PAM config (pam_gnome_keyring auto_start) already starts and unlocks
+# the daemon at login. gnome-keyring's own systemd --user socket is also
+# enabled by default and races that PAM-started instance for the same
+# control directory, crashing the daemon and leaving a fresh, locked (and
+# thus password-prompting) instance behind. Masking the socket leaves PAM
+# as the only thing that ever starts it.
+systemctl --user mask gnome-keyring-daemon.socket
+ok "GNOME Keyring configured"
+
+# ============================================================
+# 8. Bluetooth
 # ============================================================
 step "Disabling Bluetooth auto-enable"
 if [ -f /etc/bluetooth/main.conf ]; then
@@ -216,7 +229,7 @@ else
 fi
 
 # ============================================================
-# 8. Git config
+# 9. Git config
 # ============================================================
 step "Configuring Git"
 git config --global user.email "$GIT_EMAIL"
@@ -224,13 +237,13 @@ git config --global user.name  "$GIT_NAME"
 ok "Git configured"
 
 # ============================================================
-# 9. Claude Code
+# 10. Claude Code
 # ============================================================
 step "Installing Claude Code"
 curl -fsSL https://claude.ai/install.sh | sh || warn "Claude Code install failed"
 
 # ============================================================
-# 10. Ollama
+# 11. Ollama
 # ============================================================
 step "Setting up Ollama"
 curl -fsSL https://ollama.com/install.sh | sh || fail "Ollama install failed"

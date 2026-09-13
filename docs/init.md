@@ -30,20 +30,21 @@ cd dotfiles
     - `brave-origin-bin` — de-Googled Brave build
 7. **Install DankMaterialShell** — `curl -fsSL https://install.danklinux.com \| sh`.
 8. **Symlink configuration files** — links each entry in `DOTFILE_LINKS` from the repo into `$HOME` (see table below). Any existing file/symlink at the target is backed up (`<target>.bak.<timestamp>`) instead of deleted.
-9. **Disable Bluetooth auto-enable** — sets `AutoEnable=false` in `/etc/bluetooth/main.conf`, if Bluetooth is installed.
-10. **Set git identity** — configures `user.name` and `user.email` globally from `GIT_NAME`/`GIT_EMAIL`.
-11. **Install Claude Code** — `curl -fsSL https://claude.ai/install.sh \| sh`.
-12. **Install and configure Ollama** — installs via `curl -fsSL https://ollama.com/install.sh \| sh`, sets ownership/permissions on `/var/lib/ollama`, writes a systemd drop-in (`/etc/systemd/system/ollama.service.d/override.conf`) from `OLLAMA_NUM_CTX`/`OLLAMA_FLASH_ATTENTION`/`OLLAMA_KEEP_ALIVE`, then enables and starts the service.
-13. **Pull Ollama models** — pulls each model in `MODELS`:
+9. **Disable GNOME Keyring's systemd socket** — masks `gnome-keyring-daemon.socket` (`systemctl --user mask`). It's enabled by default and races the daemon instance that `ly`'s PAM config (`pam_gnome_keyring auto_start`) starts at login for the same control directory, crashing it and leaving behind a fresh, locked (password-prompting) daemon. PAM stays the only thing that starts it.
+10. **Disable Bluetooth auto-enable** — sets `AutoEnable=false` in `/etc/bluetooth/main.conf`, if Bluetooth is installed.
+11. **Set git identity** — configures `user.name` and `user.email` globally from `GIT_NAME`/`GIT_EMAIL`.
+12. **Install Claude Code** — `curl -fsSL https://claude.ai/install.sh \| sh`.
+13. **Install and configure Ollama** — installs via `curl -fsSL https://ollama.com/install.sh \| sh`, sets ownership/permissions on `/var/lib/ollama`, writes a systemd drop-in (`/etc/systemd/system/ollama.service.d/override.conf`) from `OLLAMA_NUM_CTX`/`OLLAMA_FLASH_ATTENTION`/`OLLAMA_KEEP_ALIVE`, then enables and starts the service.
+14. **Pull Ollama models** — pulls each model in `MODELS`:
     - `qwen3.5:4b` — general purpose
     - `qwen3-coder-next:latest` — snippets / code generation (Zed agent panel default)
     - `qwen2.5-coder:14b` — autocomplete / inline predictions (Zed edit_predictions)
-14. **Reboot** — after a 5-second countdown.
+15. **Reboot** — after a 5-second countdown.
 
 Non-critical steps (Flatpak installs, DankMaterialShell, Claude Code, Ollama model pulls, the Ollama service start) warn and continue on failure rather than aborting the whole script; package installation, sudoers setup, and the Ollama install itself are treated as fatal.
 
 > [!NOTE]
-> Step 10 defaults `GIT_NAME`/`GIT_EMAIL` to `singudotdev` / `contact@singu.dev`. If you clone or fork this repo, change those variables near the top of `init.sh` to your own name/email before running it.
+> Step 11 defaults `GIT_NAME`/`GIT_EMAIL` to `singudotdev` / `contact@singu.dev`. If you clone or fork this repo, change those variables near the top of `init.sh` to your own name/email before running it.
 
 ## What gets symlinked
 
