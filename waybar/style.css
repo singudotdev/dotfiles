@@ -1,0 +1,103 @@
+@import url("colors.css");
+
+* {
+    font-family: "Hack Nerd Font", "Input Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: alpha(@bg, 0.85);
+    color: @fg;
+    border: 1px solid alpha(@accent, 0.5);
+    border-radius: 2px;
+    padding: 0 8px;
+}
+
+#workspaces {
+    margin-left: 8px;
+}
+
+#workspaces button {
+    padding: 8px;
+    color: @muted;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button.active {
+    color: @accent;
+}
+
+#workspaces button.urgent {
+    color: @urgent;
+}
+
+#window,
+#clock,
+#tray,
+#pulseaudio,
+#custom-cpu,
+#memory,
+#custom-gpu,
+#battery,
+#custom-notification {
+    padding: 8px;
+    color: @fg;
+}
+
+#custom-notification {
+    color: @accent;
+    margin-right: 8px;
+}
+
+#custom-sep-left,
+#custom-sep0,
+#custom-sep1,
+#custom-sep2,
+#custom-sep3,
+#custom-sep4 {
+    padding: 8px 4px;
+    color: @muted;
+    opacity: 0.5;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#memory.warning,
+#battery.warning,
+#custom-cpu.medium,
+#custom-gpu.medium {
+    color: #f5c26b;
+}
+
+#memory.critical,
+#battery.critical,
+#custom-cpu.high,
+#custom-gpu.high {
+    color: @urgent;
+}
+
+#tray > .passive {
+    opacity: 0.6;
+}
+
+#tray > .needs-attention {
+    color: @urgent;
+}
+
+tooltip {
+    background-color: alpha(@bg, 0.85);
+    border: 1px solid @accent;
+    border-radius: 2px;
+    padding: 6px;
+    margin-top: 8px;
+}
+
+tooltip label {
+    color: @fg;
+    padding: 8px;
+}

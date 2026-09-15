@@ -1,0 +1,75 @@
+[config]
+fallback_color = "#adc6ff"
+# Pick the single most dominant color from the image (0 = most dominant),
+# instead of "prefer"-based heuristics that can latch onto a minor but
+# highly saturated speck instead of the wallpaper's actual main color.
+source_color_index = 0
+
+# We set the wallpaper ourselves (swaybg, via scripts/wallpaper.sh) and only
+# call `matugen image` for the color scheme, so no [config.wallpaper] here.
+
+# Seed hues matugen harmonizes toward the current palette (muted, blended
+# with the background, not vivid) — used for ghostty/zed's red/green/etc.
+[config.custom_colors]
+red = "#ff0000"
+green = "#00ff00"
+yellow = "#ffff00"
+blue = "#0000ff"
+magenta = "#ff00ff"
+cyan = "#00ffff"
+
+[templates.niri]
+input_path = "templates/niri-colors.kdl"
+output_path = "~/.config/niri/local/colors.kdl"
+
+[templates.waybar]
+input_path = "templates/waybar-colors.css"
+output_path = "~/.config/waybar/colors.css"
+post_hook = "pkill -SIGUSR2 waybar"
+
+[templates.waybar-config]
+input_path = "templates/waybar-config.jsonc"
+output_path = "~/.config/waybar/config.jsonc"
+post_hook = "pkill -SIGUSR2 waybar"
+
+[templates.swaync]
+input_path = "templates/swaync-colors.css"
+output_path = "~/.config/swaync/colors.css"
+post_hook = "swaync-client -rs"
+
+[templates.gtklock-config]
+input_path = "templates/gtklock-config.ini"
+output_path = "~/.config/gtklock/config.ini"
+
+[templates.gtklock-colors]
+input_path = "templates/gtklock-colors.css"
+output_path = "~/.config/gtklock/colors.css"
+
+[templates.fuzzel]
+input_path = "templates/fuzzel.ini"
+output_path = "~/.config/fuzzel/fuzzel.ini"
+
+[templates.fish]
+input_path = "templates/fish-colors.fish"
+output_path = "~/.config/fish/conf.d/matugen-colors.fish"
+
+[templates.ghostty]
+input_path = "templates/ghostty-theme"
+output_path = "~/.config/ghostty/themes/matugen"
+# ghostty runs as a single background instance (gtk-single-instance) that only
+# reads config/theme files once at startup, so new windows won't pick up a
+# regenerated theme on their own. Trigger its D-Bus reload-config action
+# instead of expecting a restart.
+post_hook = "gdbus call --session --dest com.mitchellh.ghostty --object-path /com/mitchellh/ghostty --method org.gtk.Actions.Activate reload-config [] {} || true"
+
+[templates.swayosd]
+input_path = "templates/swayosd-style.css"
+output_path = "~/.config/swayosd/style.css"
+post_hook = "pkill -x swayosd-server; setsid swayosd-server >/dev/null 2>&1 &"
+
+[templates.zed]
+input_path = "templates/zed-theme.json"
+output_path = "~/.config/zed/themes/matugen-theme.json"
+# Reapplies the transparency tuning matugen's regen wipes out (see the
+# script's own header comment for why this has to run after every regen).
+post_hook = "fix-zed-transparency || true"

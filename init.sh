@@ -22,6 +22,10 @@ PACKAGES=(
     podman                                               # containers
     gnome-keyring proton-vpn-gtk-app                     # secrets, VPN
     ttf-hack-nerd ttf-input-nerd                         # fonts
+    tela-circle-icon-theme-dracula                       # icon theme
+    waybar fuzzel cliphist swaync gtklock swaybg zenity # niri desktop shell pieces
+    swayosd playerctl wl-clipboard                       # OSD, media keys, clipboard
+    matugen                                              # wallpaper-driven color scheme generation
 )
 
 # Flatpak applications (Flathub app IDs)
@@ -40,16 +44,30 @@ AUR_PACKAGES=(
 
 # Dotfiles to symlink, one per line: "path in this repo:target under $HOME"
 DOTFILE_LINKS=(
-    "DankMaterialShell:.config/DankMaterialShell"
+    "bottom/bottom.toml:.config/bottom/bottom.toml"
     "fish:.config/fish"
     "ghostty:.config/ghostty"
     "niri:.config/niri"
+    "waybar:.config/waybar"
+    "fuzzel:.config/fuzzel"
+    "swaync:.config/swaync"
+    "swayosd:.config/swayosd"
+    "gtklock:.config/gtklock"
+    "gtk-3.0/settings.ini:.config/gtk-3.0/settings.ini"
+    "gtk-4.0/settings.ini:.config/gtk-4.0/settings.ini"
+    "matugen:.config/matugen"
     "zed:.config/zed"
     "starship/starship.toml:.config/starship.toml"
     "fetch:.config/fetch"
     "scripts/upgrade-aur.sh:.local/bin/upgrade-aur"
     "scripts/clean-pkgs.sh:.local/bin/clean-pkgs"
     "scripts/fix-zed-transparency.sh:.local/bin/fix-zed-transparency"
+    "scripts/powermenu.sh:.local/bin/powermenu"
+    "scripts/clipboard-picker.sh:.local/bin/clipboard-picker"
+    "scripts/workspace-rename.sh:.local/bin/workspace-rename"
+    "scripts/wallpaper.sh:.local/bin/wallpaper"
+    "scripts/gpu-status.sh:.local/bin/gpu-status"
+    "scripts/cpu-status.sh:.local/bin/cpu-status"
 )
 
 GIT_EMAIL="contact@singu.dev"
@@ -176,13 +194,7 @@ done
 ok "AUR packages processed"
 
 # ============================================================
-# 5. DankMaterialShell
-# ============================================================
-step "Installing DankMaterialShell"
-curl -fsSL https://install.danklinux.com | sh || warn "DankMaterialShell install failed"
-
-# ============================================================
-# 6. Dotfile symlinks
+# 5. Dotfile symlinks
 # ============================================================
 step "Linking dotfiles"
 
@@ -205,7 +217,7 @@ for entry in "${DOTFILE_LINKS[@]}"; do
 done
 
 # ============================================================
-# 7. GNOME Keyring
+# 6. GNOME Keyring
 # ============================================================
 step "Disabling GNOME Keyring's systemd socket"
 # ly's PAM config (pam_gnome_keyring auto_start) already starts and unlocks
@@ -218,7 +230,7 @@ systemctl --user mask gnome-keyring-daemon.socket
 ok "GNOME Keyring configured"
 
 # ============================================================
-# 8. Bluetooth
+# 7. Bluetooth
 # ============================================================
 step "Disabling Bluetooth auto-enable"
 if [ -f /etc/bluetooth/main.conf ]; then
@@ -229,7 +241,7 @@ else
 fi
 
 # ============================================================
-# 9. Git config
+# 8. Git config
 # ============================================================
 step "Configuring Git"
 git config --global user.email "$GIT_EMAIL"
@@ -237,13 +249,13 @@ git config --global user.name  "$GIT_NAME"
 ok "Git configured"
 
 # ============================================================
-# 10. Claude Code
+# 9. Claude Code
 # ============================================================
 step "Installing Claude Code"
 curl -fsSL https://claude.ai/install.sh | sh || warn "Claude Code install failed"
 
 # ============================================================
-# 11. Ollama
+# 10. Ollama
 # ============================================================
 step "Setting up Ollama"
 curl -fsSL https://ollama.com/install.sh | sh || fail "Ollama install failed"

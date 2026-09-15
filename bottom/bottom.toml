@@ -166,6 +166,10 @@
 # If unset, defaults to CPU%.
 #default_sort = "CPU%"
 
+# The default sort order. Can be either "Ascending" or "Descending".
+# Defaults to sensible defaults for the data type (e.g. descending for CPU/memory usage, ascending for process names).
+#sort_order = "Ascending"
+
 # Gather process child thread information
 #get_threads = false
 
@@ -227,6 +231,10 @@
 #
 # Defaults to "Disk".
 #default_sort = "Disk"
+
+# The default sort order. Can be either "Ascending" or "Descending".
+# Defaults to ascending.
+#sort_order = "Ascending"
 
 # Whether to include block devices that aren't currently mounted (currently Linux only). Defaults to false.
 #include_unmounted = false
@@ -315,6 +323,10 @@
 # Defaults to "Sensor".
 #default_sort = "Sensor"
 
+# The default sort order. Can be either "Ascending" or "Descending".
+# Defaults to ascending.
+#sort_order = "Ascending"
+
 # By default, there are no temperature sensor filters enabled. An example use case is provided below.
 #[temperature.sensor_filter]
 # Whether to ignore any matches. Defaults to true.
@@ -382,6 +394,9 @@
 
 # Whether to display packet rate and average packet size info. Defaults to false.
 #show_packets = false
+
+# Zeroes out the total network usage ("All") counters so it shows the total usage\nsince the app is started, rather than the total usage since boot.
+#start_zeroed = false
 
 # By default, there are no network interface filters enabled. An example use case is provided below.
 #[network_graph.interface_filter]

@@ -1,13 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
-# Matugen regenerates zed/themes/dank-zed-theme.json from the current
-# wallpaper colors (see init.sh's matugenTemplateZed), wiping the "DankShell
-# Dark Transparent" theme's transparency tuning back to matugen's opaque-ish
-# defaults. Run this after a wallpaper/theme change to reapply it.
+# Matugen regenerates zed/themes/matugen-theme.json from the current
+# wallpaper colors (see matugen/templates/zed-theme.json), wiping the
+# "Matugen Dark Transparent" theme's transparency tuning back to matugen's
+# opaque-ish defaults. Run this after a wallpaper/theme change to reapply it.
 
-THEME_FILE="$HOME/.config/zed/themes/dank-zed-theme.json"
-THEME_NAME="DankShell Dark Transparent"
+THEME_FILE="$HOME/.config/zed/themes/matugen-theme.json"
+THEME_NAME="Matugen Dark Transparent"
 
 # Bars stay more see-through; the editor/panel/terminal workspace stays more
 # solid so code is easier to read; context menus are fully opaque so popups
