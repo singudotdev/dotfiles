@@ -91,12 +91,12 @@ right_format = ""
 palette = "matugen"
 
 [palettes.matugen]
-mgaccent = "#80d4db"
-mgyellow = "#b7c7ea"
-mgpurple = "#b1cbce"
-mggreen = "#374764"
+mgaccent = "#ffb3af"
+mgyellow = "#e2c28c"
+mgpurple = "#e7bdba"
+mggreen = "#594319"
 mgred = "#ffb4ab"
-mgblue = "#324b4d"
+mgblue = "#5d3f3d"
 
 [character]
 format = "$symbol "
@@ -138,7 +138,7 @@ truncation_length = 20
 only_attached = false
 
 [git_commit]
-format = "on [\\($hash$tag\\)]($style) "
+format = 'on [\($hash$tag\)]($style) '
 style = "bold mggreen"
 only_detached = true
 tag_symbol = " 󰓹 "
@@ -389,5 +389,5 @@ disabled = false
 
 [kubernetes]
 symbol = "󱃾 "
-format = "on [$symbol$context( \\($namespace\\))]($style) "
+format = 'on [$symbol$context( \($namespace\))]($style) '
 disabled = false
