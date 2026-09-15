@@ -21,7 +21,7 @@ binds {
     }
 
     Mod+Z hotkey-overlay-title="Zed" {
-        spawn "sh" "-c" "fix-zed-transparency && zeditor";
+        spawn "sh" "-c" "zeditor";
     }
 
     Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "powermenu"; }
@@ -31,7 +31,7 @@ binds {
     }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "swaync-client" "-t" "-sw"; }
     Mod+Shift+N hotkey-overlay-title="Notepad" {
-        spawn "sh" "-c" "fix-zed-transparency && zeditor ~/notes.md";
+        spawn "sh" "-c" "zeditor ~/notes.md";
     }
 
     // === Security ===

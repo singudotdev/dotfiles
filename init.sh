@@ -63,7 +63,6 @@ DOTFILE_LINKS=(
     "fetch:.config/fetch"
     "scripts/upgrade-aur.sh:.local/bin/upgrade-aur"
     "scripts/clean-pkgs.sh:.local/bin/clean-pkgs"
-    "scripts/fix-zed-transparency.sh:.local/bin/fix-zed-transparency"
     "scripts/powermenu.sh:.local/bin/powermenu"
     "scripts/clipboard-picker.sh:.local/bin/clipboard-picker"
     "scripts/workspace-rename.sh:.local/bin/workspace-rename"

@@ -58,7 +58,6 @@ cd dotfiles
 | `scripts/btrfs-optimize.sh` | Tunes an existing btrfs root (compression, scheduler, scrub, snapper, Steam subvolume, Limine boot-menu snapshots) | [docs/btrfs-optimize.md](./docs/btrfs-optimize.md) |
 | `scripts/upgrade-aur.sh` | On-demand checker/rebuilder for AUR packages installed outside an AUR helper | [docs/upgrade-aur.md](./docs/upgrade-aur.md) |
 | `scripts/clean-pkgs.sh` | Clears the pacman/Flatpak caches and removes orphaned packages | [docs/clean-pkgs.md](./docs/clean-pkgs.md) |
-| `scripts/fix-zed-transparency.sh` | Reapplies Zed's transparency tuning after matugen resets it on a wallpaper change | [docs/fix-zed-transparency.md](./docs/fix-zed-transparency.md) |
 | `scripts/wallpaper.sh` | Wallpaper daemon (`swaybg`) + picker (`zenity`, `Mod+Y`); applying an image also regenerates matugen's color scheme | [docs/wallpaper.md](./docs/wallpaper.md) |
 | `scripts/powermenu.sh` | Power menu (`Super+X`) via fuzzel — lock/logout/suspend/reboot/shutdown | [docs/powermenu.md](./docs/powermenu.md) |
 | `scripts/clipboard-picker.sh` | Clipboard history picker (`Mod+V`): `cliphist` + fuzzel dmenu | [docs/clipboard-picker.md](./docs/clipboard-picker.md) |

@@ -70,6 +70,3 @@ post_hook = "pkill -x swayosd-server; setsid swayosd-server >/dev/null 2>&1 &"
 [templates.zed]
 input_path = "templates/zed-theme.json"
 output_path = "~/.config/zed/themes/matugen-theme.json"
-# Reapplies the transparency tuning matugen's regen wipes out (see the
-# script's own header comment for why this has to run after every regen).
-post_hook = "fix-zed-transparency || true"
