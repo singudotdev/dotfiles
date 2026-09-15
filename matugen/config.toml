@@ -5,10 +5,15 @@ fallback_color = "#adc6ff"
 # actual dominant color by pixel count. Everything else (scheme type, light
 # vs dark mode) is left to matugen itself: `-t scheme-tonal-spot -m smart` in
 # scripts/wallpaper.sh picks the palette and light/dark mode automatically.
-# No [config.custom_colors]: every template below reads
-# matugen's own native roles (colors.primary/secondary/tertiary/error and
-# their containers) directly, with no manual saturate/lighten/blend
-# adjustment and no custom seed hues.
+# No [config.custom_colors]: every template below reads matugen's own
+# native roles (colors.primary/secondary/tertiary/error and their
+# containers) directly, with no manual saturate/lighten/blend adjustment
+# and no custom seed hues — except templates/zed-theme.json's "syntax"
+# block, which pins a fixed Monokai-style hue/saturation/lightness per
+# token category (via matugen's set_hue/set_saturation/set_lightness
+# filters) so code stays readable regardless of wallpaper. Everything
+# else in that template (background, chrome, terminal panel) still
+# tracks the wallpaper normally.
 source_color_index = 0
 
 # We set the wallpaper ourselves (swaybg, via scripts/wallpaper.sh) and only

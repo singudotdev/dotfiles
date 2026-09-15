@@ -25,7 +25,7 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | [`swaync`](./swaync) | Config for [SwayNotificationCenter](https://github.com/ErikReider/SwayNotificationCenter), notifications + history panel |
 | [`gtklock`](./gtklock) | Config for [gtklock](https://github.com/jovanlanik/gtklock), the lock screen |
 | [`swayosd`](./swayosd) | Config for [SwayOSD](https://github.com/ErikReider/SwayOSD), the volume/brightness/mic on-screen display |
-| [`matugen`](./matugen) | [matugen](https://github.com/InioX/matugen) config and templates — generates the color scheme for every tool listed here plus fish/Ghostty/Zed from the current wallpaper |
+| [`matugen`](./matugen) | [matugen](https://github.com/InioX/matugen) config and templates — generates the color scheme for every tool listed here plus fish/Ghostty/Zed from the current wallpaper (Zed's syntax highlighting is the one exception: a fixed Monokai-style palette, kept readable independent of the wallpaper) |
 | [`gtk-3.0`](./gtk-3.0), [`gtk-4.0`](./gtk-4.0) | `settings.ini` for GTK's icon theme ([Tela circle Dracula](https://github.com/vinceliuice/Tela-circle-icon-theme)) and dark preference |
 | [`bottom`](./bottom) | Config for [bottom](https://github.com/ClementTsang/bottom), a terminal system monitor |
 | [`fetch`](./fetch) | Config for the system info fetch tool ([fastfetch](https://github.com/fastfetch-cli/fastfetch)) |

@@ -195,12 +195,12 @@
                 ],
                 "syntax": {
                     "attribute": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": "italic",
                         "font_weight": null
                     },
                     "boolean": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 54.0 | set_saturation: 70.0 | set_lightness: 68.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
@@ -215,12 +215,12 @@
                         "font_weight": null
                     },
                     "constant": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 54.0 | set_saturation: 70.0 | set_lightness: 68.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "constructor": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 261.0 | set_saturation: 100.0 | set_lightness: 75.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
@@ -230,52 +230,52 @@
                         "font_weight": null
                     },
                     "emphasis": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": "italic",
                         "font_weight": null
                     },
                     "emphasis.strong": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 54.0 | set_saturation: 70.0 | set_lightness: 68.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": 700
                     },
                     "enum": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "function": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 261.0 | set_saturation: 100.0 | set_lightness: 75.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "keyword": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 338.0 | set_saturation: 95.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": "italic",
                         "font_weight": null
                     },
                     "label": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "link_text": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": "italic",
                         "font_weight": null
                     },
                     "link_uri": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": "normal",
                         "font_weight": null
                     },
                     "number": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 54.0 | set_saturation: 70.0 | set_lightness: 68.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "operator": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
@@ -315,42 +315,42 @@
                         "font_weight": null
                     },
                     "selector.pseudo": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "string": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 80.0 | set_saturation: 76.0 | set_lightness: 53.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "string.escape": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "string.regex": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 80.0 | set_saturation: 76.0 | set_lightness: 53.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "string.special": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "string.special.symbol": {
-                        "color": "{{colors.primary.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary.default.hex | set_hue: 190.0 | set_saturation: 81.0 | set_lightness: 67.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "tag": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "text.literal": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 80.0 | set_saturation: 76.0 | set_lightness: 53.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
@@ -370,12 +370,12 @@
                         "font_weight": null
                     },
                     "variable.special": {
-                        "color": "{{colors.secondary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.secondary_container.default.hex | set_hue: 54.0 | set_saturation: 70.0 | set_lightness: 68.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     },
                     "variant": {
-                        "color": "{{colors.primary_container.default.hex | saturate: 30.0, "hsl" | format: "hex"}}",
+                        "color": "{{colors.primary_container.default.hex | set_hue: 32.0 | set_saturation: 98.0 | set_lightness: 56.0 | format: "hex"}}",
                         "font_style": null,
                         "font_weight": null
                     }
