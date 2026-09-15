@@ -59,11 +59,12 @@ cd dotfiles
 | `scripts/upgrade-aur.sh` | On-demand checker/rebuilder for AUR packages installed outside an AUR helper | [docs/upgrade-aur.md](./docs/upgrade-aur.md) |
 | `scripts/clean-pkgs.sh` | Clears the pacman/Flatpak caches and removes orphaned packages | [docs/clean-pkgs.md](./docs/clean-pkgs.md) |
 | `scripts/fix-zed-transparency.sh` | Reapplies Zed's transparency tuning after matugen resets it on a wallpaper change | [docs/fix-zed-transparency.md](./docs/fix-zed-transparency.md) |
-| `scripts/wallpaper.sh` | Wallpaper daemon (`swaybg`) + picker (`zenity`, `Mod+Y`); applying an image also regenerates matugen's color scheme | — |
-| `scripts/powermenu.sh` | Power menu (`Super+X`) via fuzzel — lock/logout/suspend/reboot/shutdown | — |
-| `scripts/clipboard-picker.sh` | Clipboard history picker (`Mod+V`): `cliphist` + fuzzel dmenu | — |
-| `scripts/workspace-rename.sh` | Prompt to rename the focused niri workspace (`Ctrl+Shift+R`) | — |
-| `scripts/cpu-status.sh`, `scripts/gpu-status.sh` | Combined usage+temperature waybar modules (CPU via `/proc/stat`+hwmon, GPU via `nvidia-smi`) | — |
+| `scripts/wallpaper.sh` | Wallpaper daemon (`swaybg`) + picker (`zenity`, `Mod+Y`); applying an image also regenerates matugen's color scheme | [docs/wallpaper.md](./docs/wallpaper.md) |
+| `scripts/powermenu.sh` | Power menu (`Super+X`) via fuzzel — lock/logout/suspend/reboot/shutdown | [docs/powermenu.md](./docs/powermenu.md) |
+| `scripts/clipboard-picker.sh` | Clipboard history picker (`Mod+V`): `cliphist` + fuzzel dmenu | [docs/clipboard-picker.md](./docs/clipboard-picker.md) |
+| `scripts/workspace-rename.sh` | Prompt to rename the focused niri workspace (`Ctrl+Shift+R`) | [docs/workspace-rename.md](./docs/workspace-rename.md) |
+| `scripts/cpu-status.sh` | CPU usage+temperature waybar module (`/proc/stat` + hwmon) | [docs/cpu-status.md](./docs/cpu-status.md) |
+| `scripts/gpu-status.sh` | NVIDIA GPU usage+VRAM+temperature waybar module (`nvidia-smi`) | [docs/gpu-status.md](./docs/gpu-status.md) |
 
 ## Fish functions
 
