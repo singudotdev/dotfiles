@@ -39,7 +39,8 @@ cd dotfiles
     - `qwen3-coder-next:latest` — snippets / code generation (Zed agent panel default)
     - `qwen2.5-coder:14b` — autocomplete / inline predictions (Zed edit_predictions)
 14. **Set GTK dark theme** — `gsettings set org.gnome.desktop.interface color-scheme prefer-dark`, so GTK apps default to dark mode.
-15. **Reboot** — after a 5-second countdown. This is also the point where niri's `spawn-at-startup` entries (waybar, swaync, swayosd-server, the wallpaper daemon, cliphist watchers — see [`niri/local/autostart.kdl`](../niri/local/autostart.kdl)) first run, and matugen generates the initial color scheme from whatever wallpaper `scripts/wallpaper.sh` falls back to.
+15. **Disable IPv6** — writes `/etc/sysctl.d/99-disable-ipv6.conf` (`net.ipv6.conf.{all,default,lo}.disable_ipv6 = 1`) and applies it immediately with `sysctl --system`.
+16. **Reboot** — after a 5-second countdown. This is also the point where niri's `spawn-at-startup` entries (waybar, swaync, swayosd-server, the wallpaper daemon, cliphist watchers — see [`niri/local/autostart.kdl`](../niri/local/autostart.kdl)) first run, and matugen generates the initial color scheme from whatever wallpaper `scripts/wallpaper.sh` falls back to.
 
 Non-critical steps (Flatpak installs, Claude Code, Ollama model pulls, the Ollama service start) warn and continue on failure rather than aborting the whole script; package installation, sudoers setup, and the Ollama install itself are treated as fatal.
 
@@ -60,7 +61,9 @@ Non-critical steps (Flatpak installs, Claude Code, Ollama model pulls, the Ollam
 | `swayosd/` | `~/.config/swayosd` |
 | `gtklock/` | `~/.config/gtklock` |
 | `gtk-3.0/settings.ini` | `~/.config/gtk-3.0/settings.ini` |
+| `gtk-3.0/gtk.css` | `~/.config/gtk-3.0/gtk.css` |
 | `gtk-4.0/settings.ini` | `~/.config/gtk-4.0/settings.ini` |
+| `gtk-4.0/gtk.css` | `~/.config/gtk-4.0/gtk.css` |
 | `matugen/` | `~/.config/matugen` |
 | `zed/` | `~/.config/zed` |
 | `starship/starship.toml` | `~/.config/starship.toml` |

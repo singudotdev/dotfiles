@@ -26,17 +26,14 @@ output_path = "~/.config/niri/local/colors.kdl"
 [templates.waybar]
 input_path = "templates/waybar-colors.css"
 output_path = "~/.config/waybar/colors.css"
-post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.waybar-config]
 input_path = "templates/waybar-config.jsonc"
 output_path = "~/.config/waybar/config.jsonc"
-post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.swaync]
 input_path = "templates/swaync-colors.css"
 output_path = "~/.config/swaync/colors.css"
-post_hook = "swaync-client -rs"
 
 [templates.gtklock-config]
 input_path = "templates/gtklock-config.ini"
@@ -45,6 +42,23 @@ output_path = "~/.config/gtklock/config.ini"
 [templates.gtklock-colors]
 input_path = "templates/gtklock-colors.css"
 output_path = "~/.config/gtklock/colors.css"
+
+[templates.gtk3]
+input_path = "templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/gtk.css"
+
+[templates.gtk4]
+input_path = "templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/gtk.css"
+# GTK only reads gtk.css once at startup, so restart waybar/swaync/nautilus/
+# protonvpn-app to pick up the new accent color. waybar/swaync's own
+# colors.css/config.jsonc reload comes along for free with the restart, so
+# they don't need their own separate reload hook. protonvpn-app doesn't
+# reliably self-recover its tray registration after waybar restarts, so it
+# needs restarting too, on every wallpaper change. Only one of the two
+# (identical) gtk3/gtk4 templates needs this, to avoid restarting things
+# twice.
+post_hook = "pkill -x waybar; pkill -x swaync; pkill -x nautilus; pkill -x protonvpn-app; setsid waybar >/dev/null 2>&1 & setsid swaync >/dev/null 2>&1 & setsid nautilus --gapplication-service >/dev/null 2>&1 & setsid protonvpn-app >/dev/null 2>&1 &"
 
 [templates.fuzzel]
 input_path = "templates/fuzzel.ini"

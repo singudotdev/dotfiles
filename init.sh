@@ -56,7 +56,9 @@ DOTFILE_LINKS=(
     "swayosd:.config/swayosd"
     "gtklock:.config/gtklock"
     "gtk-3.0/settings.ini:.config/gtk-3.0/settings.ini"
+    "gtk-3.0/gtk.css:.config/gtk-3.0/gtk.css"
     "gtk-4.0/settings.ini:.config/gtk-4.0/settings.ini"
+    "gtk-4.0/gtk.css:.config/gtk-4.0/gtk.css"
     "matugen:.config/matugen"
     "zed:.config/zed"
     "starship/starship.toml:.config/starship.toml"
@@ -290,6 +292,18 @@ ok "Model pulls complete"
 step Setting Dark Theme for GTK
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 ok Dark Theme for GTK setted
+
+# ============================================================
+# 12. Disable IPv6
+# ============================================================
+step "Disabling IPv6"
+sudo tee /etc/sysctl.d/99-disable-ipv6.conf > /dev/null <<EOF
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+EOF
+sudo sysctl --system > /dev/null
+ok "IPv6 disabled"
 
 # ============================================================
 # Done

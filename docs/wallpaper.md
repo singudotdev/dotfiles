@@ -23,3 +23,7 @@ wallpaper pick    # choose a new wallpaper via a zenity file picker
   - starts `swaybg -c 131316` (a solid dark fallback color) if there's no valid path yet — e.g. first boot, before any wallpaper has ever been picked.
 
 `matugen`'s regeneration failing (`|| true`) doesn't block the wallpaper itself from being applied.
+
+## GTK apps
+
+GTK only reads `gtk.css` once at startup. The `[templates.gtk4]` entry in `matugen/config.toml` carries a `post_hook` that restarts `waybar`, `swaync`, `nautilus`, and `protonvpn-app` after every regeneration so they pick up the new accent color, instead of a generic "restart every GTK process" sweep (which risks hitting multi-process apps like Steam or Telegram and crashing them instead of just refreshing a menu). `protonvpn-app` needs the restart for a separate reason too: it doesn't reliably re-register its tray icon on its own after `waybar` restarts.
