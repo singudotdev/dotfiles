@@ -23,7 +23,8 @@ PACKAGES=(
     gnome-keyring proton-vpn-gtk-app                     # secrets, VPN
     ttf-hack-nerd ttf-input-nerd                         # fonts
     tela-circle-icon-theme-dracula                       # icon theme
-    waybar fuzzel cliphist swaync gtklock swaybg zenity # niri desktop shell pieces
+    waybar fuzzel cliphist swaync gtklock swaybg zenity  # niri desktop shell pieces
+    xwayland-satellite                                   # XWayland Support
     polkit-gnome                                         # polkit authentication agent (GUI prompts)
     swayosd playerctl wl-clipboard                       # OSD, media keys, clipboard
     matugen                                              # wallpaper-driven color scheme generation
