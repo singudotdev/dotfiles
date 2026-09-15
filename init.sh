@@ -285,6 +285,13 @@ done
 ok "Model pulls complete"
 
 # ============================================================
+# 11. Setting Dark Theme for GTK
+# ============================================================
+step Setting Dark Theme for GTK
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+ok Dark Theme for GTK setted
+
+# ============================================================
 # Done
 # ============================================================
 echo ""
