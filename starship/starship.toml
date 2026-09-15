@@ -91,12 +91,12 @@ right_format = ""
 palette = "matugen"
 
 [palettes.matugen]
-mgaccent = "#ffb3af"
-mgyellow = "#e2c28c"
-mgpurple = "#e7bdba"
-mggreen = "#594319"
+mgaccent = "#85d2e8"
+mgyellow = "#c0c4eb"
+mgpurple = "#b2cbd3"
+mggreen = "#404565"
 mgred = "#ffb4ab"
-mgblue = "#5d3f3d"
+mgblue = "#344a51"
 
 [character]
 format = "$symbol "

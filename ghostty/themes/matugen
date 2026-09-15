@@ -3,26 +3,26 @@
 # tertiary/error) — no [config.custom_colors] seeds. That's only 4 distinct
 # hues, so magenta reuses secondary's hue (different tone than green) and
 # cyan reuses tertiary's hue (different tone than yellow).
-background = #0e1415
-foreground = #dde4e4
-cursor-color = #80d4db
-selection-background = #80d4db
-selection-foreground = #0e1415
-unfocused-split-fill = #1a2121
+background = #0f1416
+foreground = #dee3e6
+cursor-color = #85d2e8
+selection-background = #85d2e8
+selection-foreground = #0f1416
+unfocused-split-fill = #1b2022
 
-palette = 0=#0e1415
+palette = 0=#0f1416
 palette = 1=#93000a
-palette = 2=#324b4d
-palette = 3=#374764
-palette = 4=#004f54
-palette = 5=#324b4d
-palette = 6=#374764
-palette = 7=#dde4e4
-palette = 8=#899393
+palette = 2=#344a51
+palette = 3=#404565
+palette = 4=#004e5d
+palette = 5=#344a51
+palette = 6=#404565
+palette = 7=#dee3e6
+palette = 8=#899295
 palette = 9=#ffb4ab
-palette = 10=#b1cbce
-palette = 11=#b7c7ea
-palette = 12=#80d4db
-palette = 13=#b1cbce
-palette = 14=#b7c7ea
-palette = 15=#dde4e4
+palette = 10=#b2cbd3
+palette = 11=#c0c4eb
+palette = 12=#85d2e8
+palette = 13=#b2cbd3
+palette = 14=#c0c4eb
+palette = 15=#dee3e6
