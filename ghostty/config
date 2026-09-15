@@ -5,7 +5,7 @@ font-size = 12
 window-decoration = false
 window-padding-x = 12
 window-padding-y = 12
-background-opacity = 0.8
+background-opacity = 0.92
 background-blur-radius = 32
 
 # Cursor Configuration
@@ -34,7 +34,7 @@ keybind = ctrl+zero=reset_font_size
 
 # Material 3 UI elements
 unfocused-split-opacity = 0.7
-unfocused-split-fill = #44464f
+# unfocused-split-fill comes from the matugen theme (surface_container)
 
 # Tab configuration
 gtk-titlebar = false

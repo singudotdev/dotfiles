@@ -27,7 +27,7 @@ layout {
     }
 
     insert-hint {
-        color "{{colors.primary.default.hex_alpha | set_alpha: 0.5}}"
+        color "#{{colors.primary.default.hex_stripped}}80"
     }
 }
 

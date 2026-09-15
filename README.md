@@ -13,7 +13,7 @@
 
 </div>
 
-Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/YaLTeR/niri) as the Wayland compositor. No bundled third-party shell — the bar, launcher, notifications, lock screen, OSDs, and clipboard are separate, official-Arch-repo-only tools wired together directly, with [matugen](https://github.com/InioX/matugen) generating a matching color scheme for all of them (plus fish, Ghostty, and Zed) from the current wallpaper.
+Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/YaLTeR/niri) as the Wayland compositor. No bundled third-party shell — the bar, launcher, notifications, lock screen, OSDs, and clipboard are separate, official-Arch-repo-only tools wired together directly, with [matugen](https://github.com/InioX/matugen) generating a matching color scheme for all of them (plus fish, Ghostty, Zed, and Starship) from the current wallpaper.
 
 ## What's inside
 

@@ -33,17 +33,17 @@
         "break",
         {
             "key": "OS           ",
-            "keyColor": "red",
+            "keyColor": "magenta",
             "type": "os"
         },
         {
             "key": "Kernel       ",
-            "keyColor": "red",
+            "keyColor": "magenta",
             "type": "kernel"
         },
         {
             "key": "Uptime       ",
-            "keyColor": "red",
+            "keyColor": "magenta",
             "type": "uptime"
         },
         {
@@ -96,7 +96,14 @@
         {
             "type": "colors",
             "paddingLeft": 33,
-            "symbol": "circle"
+            "symbol": "circle",
+            "brightness": "normal"
+        },
+        {
+            "type": "colors",
+            "paddingLeft": 33,
+            "symbol": "circle",
+            "brightness": "light"
         }
     ]
 }

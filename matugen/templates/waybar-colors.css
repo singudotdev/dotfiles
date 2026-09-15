@@ -3,3 +3,4 @@
 @define-color accent {{colors.primary.default.hex}};
 @define-color muted {{colors.outline.default.hex}};
 @define-color urgent {{colors.error.default.hex}};
+@define-color warning {{colors.tertiary.default.hex}};

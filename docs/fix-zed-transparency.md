@@ -19,10 +19,10 @@ Matugen's `[templates.zed]` entry runs this automatically after every regenerati
 
 ## What it does
 
-Within the "Matugen Dark Transparent" theme block only (the light variant and the non-transparent themes are left untouched):
+Within the "Matugen Dark Transparent" theme block (the only variant `matugen/templates/zed-theme.json` still defines):
 
-1. **Bars** (`status_bar`, `title_bar`, `toolbar`, `tab_bar`, tabs) — set to `99` alpha (~60% opacity).
-2. **Workspace** (`surface.background`, the root `background` field, `panel.background`, `editor.background`/`gutter`/`subheader`, `terminal.background`) — set to `BF` alpha (75% opacity), more solid than the bars so code stays easy to read. The root `background` field is seeded from `surface.background`'s color, since matugen resets it to `null` rather than a color.
+1. **Bars** (`status_bar`, `title_bar`, `toolbar`, `tab_bar`, tabs) — set to `B3` alpha (~70% opacity).
+2. **Workspace** (`surface.background`, the root `background` field, `panel.background`, `editor.background`/`gutter`/`subheader`, `terminal.background`) — set to `E6` alpha (~90% opacity), more solid than the bars so code stays easy to read. The root `background` field is seeded from `surface.background`'s color, since matugen resets it to `null` rather than a color.
 3. **Context menus** (`elevated_surface.background` — right-click menus, command palette, file finder) — alpha stripped entirely so popups stay fully opaque and readable.
 4. **`background.appearance`** — reset to `"blurred"` in case matugen changes it, so Zed still requests OS-level blur (harmless no-op under niri, which doesn't support it, but matches the intent).
 

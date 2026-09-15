@@ -2,8 +2,8 @@
 # Wallpaper daemon (swaybg) and picker (zenity, with thumbnail previews) for niri.
 # Run with no args at startup to reapply the last saved wallpaper (or a solid
 # fallback color). Run with "pick" to choose a new one from $WALLPAPER_DIR.
-# Applying an image also regenerates the color scheme (matugen) for
-# niri/waybar/swaync/fuzzel/gtklock.
+# Applying an image also regenerates the color scheme (matugen) for every
+# tool listed in matugen/config.toml's [templates.*] entries.
 set -euo pipefail
 
 STATE_FILE="$HOME/.local/state/wallpaper"
@@ -15,7 +15,7 @@ apply() {
     if [ -n "$path" ] && [ -f "$path" ]; then
         swaybg -i "$path" -m fill &
         disown
-        matugen image "$path" -t scheme-fidelity -q || true
+        matugen image "$path" -t scheme-tonal-spot -m smart -q || true
     else
         swaybg -c "$FALLBACK_COLOR" &
         disown

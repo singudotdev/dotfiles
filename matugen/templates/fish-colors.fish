@@ -17,3 +17,7 @@ set -g fish_pager_color_prefix {{colors.primary.default.hex_stripped}}
 set -g fish_pager_color_completion {{colors.on_surface.default.hex_stripped}}
 set -g fish_pager_color_description {{colors.outline.default.hex_stripped}}
 set -g fish_pager_color_selected_background --background={{colors.primary.default.hex_stripped}}
+
+# eza (used by `ll`, see fish/functions/ll.fish) doesn't read fish_color_* —
+# it needs its own EZA_COLORS env var, truecolor form "38;2;R;G;B".
+set -gx EZA_COLORS "di=1;38;2;{{colors.primary.default.hex | to_color | format: "rgb" | replace: "rgb(", "" | replace: ")", "" | replace: ", ", ";"}}"

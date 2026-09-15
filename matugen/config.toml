@@ -1,22 +1,18 @@
 [config]
 fallback_color = "#adc6ff"
-# Pick the single most dominant color from the image (0 = most dominant),
-# instead of "prefer"-based heuristics that can latch onto a minor but
-# highly saturated speck instead of the wallpaper's actual main color.
+# Required so matugen can run headlessly (no TTY to prompt for a choice)
+# when multiple candidate source colors are found in the image — picks the
+# actual dominant color by pixel count. Everything else (scheme type, light
+# vs dark mode) is left to matugen itself: `-t scheme-tonal-spot -m smart` in
+# scripts/wallpaper.sh picks the palette and light/dark mode automatically.
+# No [config.custom_colors]: every template below reads
+# matugen's own native roles (colors.primary/secondary/tertiary/error and
+# their containers) directly, with no manual saturate/lighten/blend
+# adjustment and no custom seed hues.
 source_color_index = 0
 
 # We set the wallpaper ourselves (swaybg, via scripts/wallpaper.sh) and only
 # call `matugen image` for the color scheme, so no [config.wallpaper] here.
-
-# Seed hues matugen harmonizes toward the current palette (muted, blended
-# with the background, not vivid) — used for ghostty/zed's red/green/etc.
-[config.custom_colors]
-red = "#ff0000"
-green = "#00ff00"
-yellow = "#ffff00"
-blue = "#0000ff"
-magenta = "#ff00ff"
-cyan = "#00ffff"
 
 [templates.niri]
 input_path = "templates/niri-colors.kdl"
@@ -48,6 +44,10 @@ output_path = "~/.config/gtklock/colors.css"
 [templates.fuzzel]
 input_path = "templates/fuzzel.ini"
 output_path = "~/.config/fuzzel/fuzzel.ini"
+
+[templates.starship]
+input_path = "templates/starship.toml"
+output_path = "~/.config/starship.toml"
 
 [templates.fish]
 input_path = "templates/fish-colors.fish"

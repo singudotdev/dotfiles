@@ -71,7 +71,7 @@ window#waybar {
 #battery.warning,
 #custom-cpu.medium,
 #custom-gpu.medium {
-    color: #f5c26b;
+    color: @warning;
 }
 
 #memory.critical,

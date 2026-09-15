@@ -17,8 +17,8 @@ BAR_KEYS=(status_bar.background title_bar.background title_bar.inactive_backgrou
 # also matches each entry in the theme's "players" array (multiplayer cursor
 # colors), so it's handled separately below by line position instead of name.
 WORKSPACE_KEYS=(surface.background panel.background editor.background editor.gutter.background editor.subheader.background terminal.background)
-BAR_ALPHA="99"       # ~60% opacity
-WORKSPACE_ALPHA="BF" # 75% opacity
+BAR_ALPHA="B3"       # ~70% opacity
+WORKSPACE_ALPHA="E6" # ~90% opacity
 
 log()  { echo -e "\033[1;34m[INFO]\033[0m  $*"; }
 ok()   { echo -e "\033[1;32m[OK]\033[0m    $*"; }
