@@ -70,6 +70,7 @@ DOTFILE_LINKS=(
     "scripts/wallpaper.sh:.local/bin/wallpaper"
     "scripts/gpu-status.sh:.local/bin/gpu-status"
     "scripts/cpu-status.sh:.local/bin/cpu-status"
+    "scripts/element-desktop.sh:.local/bin/element-desktop"
 )
 
 GIT_EMAIL="contact@singu.dev"
