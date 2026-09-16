@@ -17,6 +17,7 @@ PACKAGES=(
     eza bat bottom fastfetch jq yq cloudflare-speed-cli  # CLI utils
     ghostty starship fish                                # terminal/shell
     git vim zed                                          # dev tools
+    element-desktop                                      # Matrix client
     flatpak flatseal                                     # flatpak + permissions manager
     cuda lib32-nvidia-utils steam                        # gaming/GPU
     podman                                               # containers
@@ -34,7 +35,6 @@ PACKAGES=(
 FLATPAKS=(
     com.github.tchx84.Flatseal
     org.kde.kalk
-    im.riot.Riot
     org.telegram.desktop
     com.vysp3r.ProtonPlus
 )
