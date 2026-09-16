@@ -28,6 +28,7 @@ PACKAGES=(
     xwayland-satellite                                   # XWayland Support
     polkit-gnome                                         # polkit authentication agent (GUI prompts)
     swayosd playerctl wl-clipboard                       # OSD, media keys, clipboard
+    pavucontrol                                          # PulseAudio/PipeWire mixer GUI
     matugen                                              # wallpaper-driven color scheme generation
 )
 
@@ -71,6 +72,7 @@ DOTFILE_LINKS=(
     "scripts/gpu-status.sh:.local/bin/gpu-status"
     "scripts/cpu-status.sh:.local/bin/cpu-status"
     "scripts/element-desktop.sh:.local/bin/element-desktop"
+    "scripts/audio-switch.sh:.local/bin/audio-switch"
 )
 
 GIT_EMAIL="contact@singu.dev"

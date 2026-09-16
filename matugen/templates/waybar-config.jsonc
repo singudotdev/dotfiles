@@ -64,9 +64,14 @@
         "tooltip": false
     },
     "pulseaudio": {
-        "format": "VOL {volume}%",
-        "format-muted": "VOL muted",
+        "format": "VOL {volume}% {format_source}",
+        "format-muted": "VOL muted {format_source}",
+        "format-source": "MIC {volume}%",
+        "format-source-muted": "MIC muted",
+        "tooltip-format": "Output: {desc}\nVolume: {volume}%\nMic: {format_source}",
         "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "audio-switch",
         "scroll-step": 3
     },
     "custom/sep1": {
