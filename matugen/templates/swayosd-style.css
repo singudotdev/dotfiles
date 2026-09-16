@@ -1,5 +1,5 @@
 window#osd {
-  border-radius: 999px;
+  border-radius: 2px;
   border: 2px solid {{colors.primary.default.hex}};
   background: alpha({{colors.surface.default.hex}}, 0.9);
 }
@@ -17,7 +17,7 @@ window#osd image:disabled {
 window#osd progressbar,
 window#osd segmentedprogress {
   min-height: 6px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: transparent;
   border: none;
 }
