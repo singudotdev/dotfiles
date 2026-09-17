@@ -7,10 +7,19 @@
     "margin-left": 8,
     "margin-right": 8,
 
-    "modules-left": ["niri/workspaces", "custom/sep-left", "niri/window"],
+    "modules-left": ["custom/logo", "custom/sep-logo", "niri/workspaces", "custom/sep-left", "niri/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/sep0", "pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "custom/bluetooth", "custom/network", "custom/vpn", "custom/sep5", "custom/notification"],
+    "modules-right": ["pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "tray", "custom/sep-tray", "custom/bluetooth", "custom/network", "custom/sep5", "custom/notification"],
 
+    "custom/logo": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+    "custom/sep-logo": {
+        "format": "|",
+        "tooltip": false
+    },
     "niri/workspaces": {
         "format": "{value}"
     },
@@ -55,13 +64,6 @@
                 "today": "<span color='{{colors.primary.default.hex}}'><b><u>{}</u></b></span>"
             }
         }
-    },
-    "tray": {
-        "spacing": 8
-    },
-    "custom/sep0": {
-        "format": "|",
-        "tooltip": false
     },
     "pulseaudio": {
         "format": "VOL {volume}% {format_source}",
@@ -121,6 +123,16 @@
         "format": "|",
         "tooltip": false
     },
+    "tray": {
+        "spacing": 8
+    },
+    "custom/sep-tray": {
+        "exec-if": "gdbus call --session --dest org.kde.StatusNotifierWatcher --object-path /StatusNotifierWatcher --method org.freedesktop.DBus.Properties.Get org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems 2>/dev/null | grep -q StatusNotifierItem",
+        "exec": "echo sep",
+        "interval": 5,
+        "format": "|",
+        "tooltip": false
+    },
     "custom/bluetooth": {
         "exec": "bluetooth-status",
         "return-type": "json",
@@ -130,17 +142,13 @@
         "on-click-right": "blueman-manager"
     },
     "custom/network": {
-        "format": "󰈀",
-        "tooltip-format": "Network",
-        "on-click": "nm-connection-editor"
-    },
-    "custom/vpn": {
-        "exec": "echo vpn",
-        "exec-if": "nmcli -t -f TYPE connection show --active | grep -qE '^(vpn|wireguard|openvpn|tun|tap)$'",
+        "exec": "network-status",
+        "return-type": "json",
         "interval": 5,
-        "format": "",
-        "tooltip-format": "VPN active",
-        "on-click": "protonvpn-app"
+        "format": "{}",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "ghostty --gtk-single-instance=false --class=dev.singu.nmtui-float --window-width=100 --window-height=30 -e nmtui",
+        "on-click-middle": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
     },
     "custom/sep5": {
         "format": "|",

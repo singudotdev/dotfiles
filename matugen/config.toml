@@ -54,7 +54,7 @@ output_path = "~/.config/gtk-4.0/gtk.css"
 # need a real restart. protonvpn-app also doesn't reliably re-register its
 # tray icon after waybar restarts, so it's restarted here too. Only one of
 # the two (identical) gtk3/gtk4 templates needs this.
-post_hook = "pkill -x waybar; pkill -x swaync; pkill -x nautilus; pkill -x protonvpn-app; setsid waybar >/dev/null 2>&1 & setsid swaync >/dev/null 2>&1 & setsid nautilus --gapplication-service >/dev/null 2>&1 & setsid protonvpn-app >/dev/null 2>&1 &"
+post_hook = "pkill -x waybar; pkill -x swaync; pkill -x nautilus; pkill -x protonvpn-app; setsid waybar >/dev/null 2>&1 & setsid swaync >/dev/null 2>&1 & setsid nautilus --gapplication-service >/dev/null 2>&1 & setsid protonvpn-app --start-minimized >/dev/null 2>&1 &"
 
 [templates.fuzzel]
 input_path = "templates/fuzzel.ini"

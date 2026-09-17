@@ -28,7 +28,7 @@ cd dotfiles
 5. **Flatpak applications** — adds the Flathub remote if missing, then installs each app in `FLATPAKS`, skipping ones already installed.
 6. **Install AUR packages** — clones each package in `AUR_PACKAGES` from the AUR and builds/installs it with `makepkg -si`. No AUR helper is used or required:
     - `brave-origin-bin` — de-Googled Brave build
-7. **Symlink configuration files** — links each entry in `DOTFILE_LINKS` from the repo into `$HOME` (see table below). Any existing file/symlink at the target is backed up (`<target>.bak.<timestamp>`) instead of deleted.
+7. **Symlink configuration files** — links each entry in `DOTFILE_LINKS` from the repo into `$HOME` (see table below). Any existing file/symlink at the target is backed up (`<target>.bak.<timestamp>`) instead of deleted. Then, if `~/.local/state/wallpaper` doesn't already exist, seeds it with the repo's default wallpaper so `scripts/wallpaper.sh` has something to apply instead of falling back to a solid color.
 8. **Disable GNOME Keyring's systemd socket** — masks `gnome-keyring-daemon.socket` (`systemctl --user mask`). It's enabled by default and races the daemon instance that `ly`'s PAM config (`pam_gnome_keyring auto_start`) starts at login for the same control directory, crashing it and leaving behind a fresh, locked (password-prompting) daemon. PAM stays the only thing that starts it.
 9. **Disable Bluetooth auto-enable** — sets `AutoEnable=false` in `/etc/bluetooth/main.conf`, if Bluetooth is installed.
 10. **Set git identity** — configures `user.name` and `user.email` globally from `GIT_NAME`/`GIT_EMAIL`.
@@ -68,6 +68,10 @@ Non-critical steps (Flatpak installs, Claude Code, Ollama model pulls, the Ollam
 | `zed/` | `~/.config/zed` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `fetch/` | `~/.config/fetch` |
+| `autostart/` | `~/.config/autostart` |
+| `assets/taskbar-icon.png` | `~/Pictures/logos/taskbar-icon.png` |
+| `assets/taskbar-icon-grey.png` | `~/Pictures/logos/taskbar-icon-grey.png` |
+| `assets/wallpaper.png` | `~/Pictures/wallhaven-288gj9.png` |
 | `scripts/upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
 | `scripts/clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
 | `scripts/powermenu.sh` | `~/.local/bin/powermenu` |
@@ -78,3 +82,5 @@ Non-critical steps (Flatpak installs, Claude Code, Ollama model pulls, the Ollam
 | `scripts/cpu-status.sh` | `~/.local/bin/cpu-status` |
 | `scripts/element-desktop.sh` | `~/.local/bin/element-desktop` |
 | `scripts/audio-switch.sh` | `~/.local/bin/audio-switch` |
+| `scripts/bluetooth-status.sh` | `~/.local/bin/bluetooth-status` |
+| `scripts/network-status.sh` | `~/.local/bin/network-status` |

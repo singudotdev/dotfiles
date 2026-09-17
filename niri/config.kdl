@@ -245,6 +245,11 @@ window-rule {
     open-floating true
     draw-border-with-background false
 }
+window-rule {
+    match app-id=r#"^dev\.singu\.nmtui-float$"#
+    open-floating true
+    draw-border-with-background false
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }

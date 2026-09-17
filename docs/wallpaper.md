@@ -26,4 +26,4 @@ wallpaper pick    # choose a new wallpaper via a zenity file picker
 
 ## GTK apps
 
-GTK only reads `gtk.css` once at startup. The `[templates.gtk4]` entry in `matugen/config.toml` carries a `post_hook` that restarts `waybar`, `swaync`, `nautilus`, and `protonvpn-app` after every regeneration so they pick up the new accent color. `protonvpn-app` also needs it for a separate reason: it doesn't reliably re-register its tray icon after `waybar` restarts.
+GTK only reads `gtk.css` once at startup. The `[templates.gtk4]` entry in `matugen/config.toml` carries a `post_hook` that restarts `waybar`, `swaync`, `nautilus`, and `protonvpn-app` after every regeneration so they pick up the new accent color. `protonvpn-app` also needs it for a separate reason: it doesn't reliably re-register its tray icon after `waybar` restarts. It's restarted with `--start-minimized` (ProtonVPN's own flag for staying tray-only) so this doesn't pop its window open on every wallpaper change.

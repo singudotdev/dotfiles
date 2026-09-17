@@ -14,8 +14,21 @@ window#waybar {
     padding: 0 8px;
 }
 
-#workspaces {
+/* background-image, not waybar's "image" module — that module hangs waybar
+   indefinitely on startup on this build. taskbar-icon-grey.png is
+   taskbar-icon.png desaturated + tinted to @muted (GTK3 CSS has no filter
+   support); regenerate with: ffmpeg -i taskbar-icon.png -vf
+   "hue=s=0,colorchannelmixer=rr=.5529:gg=.5765:bb=.5294,scale=32:32:flags=lanczos"
+   taskbar-icon-grey.png */
+#custom-logo {
+    background-image: url("file:///home/singu/Pictures/logos/taskbar-icon-grey.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    min-width: 16px;
+    min-height: 16px;
     margin-left: 8px;
+    padding: 8px;
 }
 
 #workspaces button {
@@ -44,7 +57,6 @@ window#waybar {
 #battery,
 #custom-bluetooth,
 #custom-network,
-#custom-vpn,
 #custom-notification {
     padding: 8px;
     color: @fg;
@@ -56,7 +68,8 @@ window#waybar {
 }
 
 #custom-sep-left,
-#custom-sep0,
+#custom-sep-logo,
+#custom-sep-tray,
 #custom-sep1,
 #custom-sep2,
 #custom-sep3,
@@ -86,12 +99,13 @@ window#waybar {
 }
 
 #custom-bluetooth.on,
-#custom-network,
-#custom-vpn {
+#custom-network.eth,
+#custom-network.connected {
     color: @accent;
 }
 
-#custom-bluetooth.off {
+#custom-bluetooth.off,
+#custom-network.on {
     color: @muted;
 }
 

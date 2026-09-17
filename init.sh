@@ -65,6 +65,9 @@ DOTFILE_LINKS=(
     "starship/starship.toml:.config/starship.toml"
     "fetch:.config/fetch"
     "autostart:.config/autostart"
+    "assets/taskbar-icon.png:Pictures/logos/taskbar-icon.png"
+    "assets/taskbar-icon-grey.png:Pictures/logos/taskbar-icon-grey.png"
+    "assets/wallpaper.png:Pictures/wallhaven-288gj9.png"
     "scripts/upgrade-aur.sh:.local/bin/upgrade-aur"
     "scripts/clean-pkgs.sh:.local/bin/clean-pkgs"
     "scripts/powermenu.sh:.local/bin/powermenu"
@@ -76,6 +79,7 @@ DOTFILE_LINKS=(
     "scripts/element-desktop.sh:.local/bin/element-desktop"
     "scripts/audio-switch.sh:.local/bin/audio-switch"
     "scripts/bluetooth-status.sh:.local/bin/bluetooth-status"
+    "scripts/network-status.sh:.local/bin/network-status"
 )
 
 GIT_EMAIL="contact@singu.dev"
@@ -223,6 +227,15 @@ for entry in "${DOTFILE_LINKS[@]}"; do
     IFS=':' read -r source_path target_path <<< "$entry"
     link_replace "${DOTFILES_DIR}/${source_path}" "${USER_HOME}/${target_path}"
 done
+
+# Seed the wallpaper state so a fresh install starts with the repo's default
+# wallpaper applied instead of scripts/wallpaper.sh's solid fallback color.
+WALLPAPER_STATE="${USER_HOME}/.local/state/wallpaper"
+if [ ! -f "$WALLPAPER_STATE" ]; then
+    mkdir -p "$(dirname "$WALLPAPER_STATE")"
+    echo "${USER_HOME}/Pictures/wallhaven-288gj9.png" > "$WALLPAPER_STATE"
+    ok "Seeded default wallpaper state"
+fi
 
 # ============================================================
 # 6. GNOME Keyring
