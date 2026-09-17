@@ -62,8 +62,8 @@ cd dotfiles
 | `scripts/powermenu.sh` | Power menu (`Super+X`) via fuzzel — lock/logout/suspend/reboot/shutdown | [docs/powermenu.md](./docs/powermenu.md) |
 | `scripts/clipboard-picker.sh` | Clipboard history picker (`Mod+V`): `cliphist` + fuzzel dmenu | [docs/clipboard-picker.md](./docs/clipboard-picker.md) |
 | `scripts/workspace-rename.sh` | Prompt to rename the focused niri workspace (`Ctrl+Shift+R`) | [docs/workspace-rename.md](./docs/workspace-rename.md) |
-| `scripts/cpu-status.sh` | CPU usage+temperature waybar module (`/proc/stat` + hwmon) | [docs/cpu-status.md](./docs/cpu-status.md) |
-| `scripts/gpu-status.sh` | NVIDIA GPU usage+VRAM+temperature waybar module (`nvidia-smi`) | [docs/gpu-status.md](./docs/gpu-status.md) |
+| `scripts/cpu-status.sh` | CPU usage+temperature waybar module (`/proc/stat` + hwmon); click opens `btm` in a floating popup | [docs/cpu-status.md](./docs/cpu-status.md) |
+| `scripts/gpu-status.sh` | NVIDIA GPU usage+VRAM+temperature waybar module (`nvidia-smi`); click opens `btm` in a floating popup | [docs/gpu-status.md](./docs/gpu-status.md) |
 | `scripts/audio-switch.sh` | Fuzzel picker to switch the default audio output sink (middle-click on waybar's `pulseaudio` module) | [docs/audio-switch.md](./docs/audio-switch.md) |
 
 ## Fish functions

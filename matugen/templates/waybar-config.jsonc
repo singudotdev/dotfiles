@@ -82,7 +82,8 @@
         "exec": "cpu-status",
         "return-type": "json",
         "interval": 3,
-        "format": "CPU {}"
+        "format": "CPU {}",
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type cpu --expanded"
     },
     "custom/sep2": {
         "format": "|",
@@ -95,7 +96,8 @@
         "states": {
             "warning": 70,
             "critical": 90
-        }
+        },
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type mem --expanded"
     },
     "custom/sep3": {
         "format": "|",
@@ -105,7 +107,8 @@
         "exec": "gpu-status",
         "return-type": "json",
         "interval": 3,
-        "format": "GPU {}"
+        "format": "GPU {}",
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type mem --expanded"
     },
     "battery": {
         "format": "BAT {capacity}%",

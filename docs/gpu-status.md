@@ -14,3 +14,7 @@ Symlinked to `~/.local/bin/gpu-status` by [`init.sh`](./init.md).
 ## Requirements
 
 Requires an NVIDIA driver package with `nvidia-smi` on `$PATH` — installed as part of the `PACKAGES` array in [`init.sh`](./init.md) (`init.sh` also refuses to run if no nvidia driver package is detected). Not applicable on non-NVIDIA GPUs.
+
+## Clicking the module
+
+`on-click` opens [`bottom`](../bottom) (`btm`) in a floating Ghostty popup, same as `custom/cpu` — see [docs/cpu-status.md#clicking-the-module](./cpu-status.md#clicking-the-module) for how the popup itself works. There's no dedicated GPU widget in `btm`, so this opens on the `mem` widget instead, which folds GPU stats in alongside RAM.
