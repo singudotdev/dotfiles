@@ -1,0 +1,7 @@
+// Alt-Tab (recent-windows) appearance.
+
+recent-windows {
+    highlight {
+        corner-radius 2
+    }
+}

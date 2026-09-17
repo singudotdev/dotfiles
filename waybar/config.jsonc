@@ -1,0 +1,157 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 0,
+    "spacing": 4,
+    "margin-top": 8,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left": ["custom/logo", "custom/sep-logo", "niri/workspaces", "custom/sep-left", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "tray", "custom/sep-tray", "custom/bluetooth", "custom/network", "custom/sep5", "custom/notification"],
+
+    "custom/logo": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+    "custom/sep-logo": {
+        "format": "|",
+        "tooltip": false
+    },
+    "niri/workspaces": {
+        "format": "{value}"
+    },
+    "custom/sep-left": {
+        "format": "|",
+        "tooltip": false
+    },
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 60,
+        "separate-outputs": true
+    },
+    "custom/notification": {
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂜",
+            "dnd-notification": "󰂠",
+            "dnd-none": "󰪓",
+            "inhibited-notification": "󰂛",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "clock": {
+        "format": " {0:%H:%M} <span font_weight='normal'>|</span> {0:%Y-%m-%d}",
+        "format-alt": " {0:%H:%M:%S}",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "today": "<span color='#a7d293'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "pulseaudio": {
+        "format": "VOL {volume}% {format_source}",
+        "format-muted": "VOL muted {format_source}",
+        "format-source": "MIC {volume}%",
+        "format-source-muted": "MIC muted",
+        "tooltip-format": "Output: {desc}\nVolume: {volume}%\nMic: {format_source}",
+        "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "audio-switch",
+        "scroll-step": 3
+    },
+    "custom/sep1": {
+        "format": "|",
+        "tooltip": false
+    },
+    "custom/cpu": {
+        "exec": "cpu-status",
+        "return-type": "json",
+        "interval": 3,
+        "format": "CPU {}",
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type cpu --expanded"
+    },
+    "custom/sep2": {
+        "format": "|",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "RAM {percentage}%",
+        "tooltip-format": "Used: {used} GiB\nAvail: {avail} GiB\nTotal: {total} GiB",
+        "interval": 2,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type mem --expanded"
+    },
+    "custom/sep3": {
+        "format": "|",
+        "tooltip": false
+    },
+    "custom/gpu": {
+        "exec": "gpu-status",
+        "return-type": "json",
+        "interval": 3,
+        "format": "GPU {}",
+        "on-click": "ghostty --gtk-single-instance=false --class=dev.singu.btm-float --window-width=100 --window-height=30 -e btm --default_widget_type mem --expanded"
+    },
+    "battery": {
+        "format": "BAT {capacity}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "custom/sep4": {
+        "format": "|",
+        "tooltip": false
+    },
+    "tray": {
+        "spacing": 8
+    },
+    "custom/sep-tray": {
+        "exec-if": "gdbus call --session --dest org.kde.StatusNotifierWatcher --object-path /StatusNotifierWatcher --method org.freedesktop.DBus.Properties.Get org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems 2>/dev/null | grep -q StatusNotifierItem",
+        "exec": "echo sep",
+        "interval": 5,
+        "format": "|",
+        "tooltip": false
+    },
+    "custom/bluetooth": {
+        "exec": "bluetooth-status",
+        "return-type": "json",
+        "interval": 5,
+        "format": "{}",
+        "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || { rfkill unblock bluetooth; bluetoothctl power on; }",
+        "on-click-right": "blueman-manager"
+    },
+    "custom/network": {
+        "exec": "network-status",
+        "return-type": "json",
+        "interval": 5,
+        "format": "{}",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "ghostty --gtk-single-instance=false --class=dev.singu.nmtui-float --window-width=100 --window-height=30 -e nmtui",
+        "on-click-middle": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
+    },
+    "custom/sep5": {
+        "format": "|",
+        "tooltip": false
+    }
+}
