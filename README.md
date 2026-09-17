@@ -65,6 +65,7 @@ cd dotfiles
 | `scripts/cpu-status.sh` | CPU usage+temperature waybar module (`/proc/stat` + hwmon); click opens `btm` in a floating popup | [docs/cpu-status.md](./docs/cpu-status.md) |
 | `scripts/gpu-status.sh` | NVIDIA GPU usage+VRAM+temperature waybar module (`nvidia-smi`); click opens `btm` in a floating popup | [docs/gpu-status.md](./docs/gpu-status.md) |
 | `scripts/audio-switch.sh` | Fuzzel picker to switch the default audio output sink (middle-click on waybar's `pulseaudio` module) | [docs/audio-switch.md](./docs/audio-switch.md) |
+| `scripts/element-desktop.sh` | Wrapper forcing Element onto the `gnome-libsecret` password store (niri isn't detected by Chromium's OSCrypt auto-pick) | [docs/element-desktop.md](./docs/element-desktop.md) |
 
 ## Fish functions
 
