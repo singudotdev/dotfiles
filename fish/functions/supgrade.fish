@@ -19,6 +19,9 @@ function supgrade --description 'Upgrade pacman packages, Flatpak apps, and AUR 
     end
 
     sudo -v
+    sudo reflector --country Spain --protocol https --age 12 --sort rate --save /etc/pacman.d/mirrorlist
+
+    sudo -v
     sudo pacman -Syyu --noconfirm
 
     sudo -v
