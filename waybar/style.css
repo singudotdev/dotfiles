@@ -42,6 +42,9 @@ window#waybar {
 #memory,
 #custom-gpu,
 #battery,
+#custom-bluetooth,
+#custom-network,
+#custom-vpn,
 #custom-notification {
     padding: 8px;
     color: @fg;
@@ -57,7 +60,8 @@ window#waybar {
 #custom-sep1,
 #custom-sep2,
 #custom-sep3,
-#custom-sep4 {
+#custom-sep4,
+#custom-sep5 {
     padding: 8px 4px;
     color: @muted;
     opacity: 0.5;
@@ -79,6 +83,16 @@ window#waybar {
 #custom-cpu.high,
 #custom-gpu.high {
     color: @urgent;
+}
+
+#custom-bluetooth.on,
+#custom-network,
+#custom-vpn {
+    color: @accent;
+}
+
+#custom-bluetooth.off {
+    color: @muted;
 }
 
 #tray > .passive {

@@ -20,7 +20,8 @@ Personal dotfiles for an Arch Linux desktop running [niri](https://github.com/Ya
 | Directory | Description |
 | --- | --- |
 | [`niri`](./niri) | Config for the [niri](https://github.com/YaLTeR/niri) scrollable-tiling Wayland compositor (`local/` holds the split-out fragments included from `config.kdl`) |
-| [`waybar`](./waybar) | Config for [Waybar](https://github.com/Alexays/Waybar), the top bar |
+| [`waybar`](./waybar) | Config for [Waybar](https://github.com/Alexays/Waybar), the top bar — see [docs/waybar-tray.md](./docs/waybar-tray.md) for the custom bluetooth/network/VPN modules replacing `blueman-applet`/`nm-applet`'s tray icons |
+| [`autostart`](./autostart) | XDG autostart overrides (`~/.config/autostart`) — currently just `Hidden=true` for `blueman-applet`/`nm-applet`, see [docs/waybar-tray.md](./docs/waybar-tray.md) |
 | [`fuzzel`](./fuzzel) | Config for [fuzzel](https://codeberg.org/dnkl/fuzzel), the app launcher and dmenu prompts (power menu, workspace rename, clipboard picker) |
 | [`swaync`](./swaync) | Config for [SwayNotificationCenter](https://github.com/ErikReider/SwayNotificationCenter), notifications + history panel |
 | [`gtklock`](./gtklock) | Config for [gtklock](https://github.com/jovanlanik/gtklock), the lock screen |
@@ -64,6 +65,7 @@ cd dotfiles
 | `scripts/workspace-rename.sh` | Prompt to rename the focused niri workspace (`Ctrl+Shift+R`) | [docs/workspace-rename.md](./docs/workspace-rename.md) |
 | `scripts/cpu-status.sh` | CPU usage+temperature waybar module (`/proc/stat` + hwmon); click opens `btm` in a floating popup | [docs/cpu-status.md](./docs/cpu-status.md) |
 | `scripts/gpu-status.sh` | NVIDIA GPU usage+VRAM+temperature waybar module (`nvidia-smi`); click opens `btm` in a floating popup | [docs/gpu-status.md](./docs/gpu-status.md) |
+| `scripts/bluetooth-status.sh` | Bluetooth adapter power state waybar module (`bluetoothctl`); click toggles power, right-click opens `blueman-manager` | [docs/bluetooth-status.md](./docs/bluetooth-status.md) |
 | `scripts/audio-switch.sh` | Fuzzel picker to switch the default audio output sink (middle-click on waybar's `pulseaudio` module) | [docs/audio-switch.md](./docs/audio-switch.md) |
 | `scripts/element-desktop.sh` | Wrapper forcing Element onto the `gnome-libsecret` password store (niri isn't detected by Chromium's OSCrypt auto-pick) | [docs/element-desktop.md](./docs/element-desktop.md) |
 

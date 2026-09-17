@@ -9,7 +9,7 @@
 
     "modules-left": ["niri/workspaces", "custom/sep-left", "niri/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/sep0", "pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "custom/notification"],
+    "modules-right": ["tray", "custom/sep0", "pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "custom/bluetooth", "custom/network", "custom/vpn", "custom/sep5", "custom/notification"],
 
     "niri/workspaces": {
         "format": "{value}"
@@ -118,6 +118,31 @@
         }
     },
     "custom/sep4": {
+        "format": "|",
+        "tooltip": false
+    },
+    "custom/bluetooth": {
+        "exec": "bluetooth-status",
+        "return-type": "json",
+        "interval": 5,
+        "format": "{}",
+        "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || { rfkill unblock bluetooth; bluetoothctl power on; }",
+        "on-click-right": "blueman-manager"
+    },
+    "custom/network": {
+        "format": "󰈀",
+        "tooltip-format": "Network",
+        "on-click": "nm-connection-editor"
+    },
+    "custom/vpn": {
+        "exec": "echo vpn",
+        "exec-if": "nmcli -t -f TYPE connection show --active | grep -qE '^(vpn|wireguard|openvpn|tun|tap)$'",
+        "interval": 5,
+        "format": "",
+        "tooltip-format": "VPN active",
+        "on-click": "protonvpn-app"
+    },
+    "custom/sep5": {
         "format": "|",
         "tooltip": false
     }

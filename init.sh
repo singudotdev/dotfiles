@@ -30,6 +30,7 @@ PACKAGES=(
     swayosd playerctl wl-clipboard                       # OSD, media keys, clipboard
     pavucontrol                                          # PulseAudio/PipeWire mixer GUI
     matugen                                              # wallpaper-driven color scheme generation
+    bluez-utils                                          # bluetoothctl, used by waybar's bluetooth module
 )
 
 # Flatpak applications (Flathub app IDs)
@@ -63,6 +64,7 @@ DOTFILE_LINKS=(
     "zed:.config/zed"
     "starship/starship.toml:.config/starship.toml"
     "fetch:.config/fetch"
+    "autostart:.config/autostart"
     "scripts/upgrade-aur.sh:.local/bin/upgrade-aur"
     "scripts/clean-pkgs.sh:.local/bin/clean-pkgs"
     "scripts/powermenu.sh:.local/bin/powermenu"
@@ -73,6 +75,7 @@ DOTFILE_LINKS=(
     "scripts/cpu-status.sh:.local/bin/cpu-status"
     "scripts/element-desktop.sh:.local/bin/element-desktop"
     "scripts/audio-switch.sh:.local/bin/audio-switch"
+    "scripts/bluetooth-status.sh:.local/bin/bluetooth-status"
 )
 
 GIT_EMAIL="contact@singu.dev"
