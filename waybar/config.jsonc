@@ -9,7 +9,7 @@
 
     "modules-left": ["custom/logo", "custom/sep-logo", "niri/workspaces", "custom/sep-left", "niri/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/sep1", "custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "battery", "custom/sep4", "tray", "custom/sep-tray", "custom/bluetooth", "custom/network", "custom/sep5", "custom/notification"],
+    "modules-right": ["custom/cpu", "custom/sep2", "memory", "custom/sep3", "custom/gpu", "custom/sep1", "pulseaudio", "battery", "custom/sep4", "tray", "custom/sep-tray", "custom/bluetooth", "custom/network", "custom/sep5", "custom/notification"],
 
     "custom/logo": {
         "format": " ",
