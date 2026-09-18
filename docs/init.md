@@ -71,7 +71,7 @@ Non-critical steps (Flatpak installs, Claude Code, Ollama model pulls, the Ollam
 | `autostart/` | `~/.config/autostart` |
 | `assets/taskbar-icon.png` | `~/Pictures/logos/taskbar-icon.png` |
 | `assets/taskbar-icon-grey.png` | `~/Pictures/logos/taskbar-icon-grey.png` |
-| `assets/wallpaper.png` | `~/Pictures/wallhaven-288gj9.png` |
+| `assets/wallpaper.png` | `~/Pictures/wallpaper.png` |
 | `scripts/upgrade-aur.sh` | `~/.local/bin/upgrade-aur` |
 | `scripts/clean-pkgs.sh` | `~/.local/bin/clean-pkgs` |
 | `scripts/powermenu.sh` | `~/.local/bin/powermenu` |
