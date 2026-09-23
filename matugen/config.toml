@@ -1,0 +1,87 @@
+[config]
+fallback_color = "#adc6ff"
+# Required so matugen can run headlessly (no TTY to prompt for a choice)
+# when multiple candidate source colors are found in the image — picks the
+# actual dominant color by pixel count. Everything else (scheme type, light
+# vs dark mode) is left to matugen itself: `-t scheme-tonal-spot -m smart` in
+# scripts/wallpaper.sh picks the palette and light/dark mode automatically.
+# No [config.custom_colors]: every template below reads matugen's own
+# native roles (colors.primary/secondary/tertiary/error and their
+# containers) directly, with no manual saturate/lighten/blend adjustment
+# and no custom seed hues — except templates/zed-theme.json's "syntax"
+# block, which pins a fixed Monokai-style hue/saturation/lightness per
+# token category (via matugen's set_hue/set_saturation/set_lightness
+# filters) so code stays readable regardless of wallpaper. Everything
+# else in that template (background, chrome, terminal panel) still
+# tracks the wallpaper normally.
+source_color_index = 0
+
+# We set the wallpaper ourselves (swaybg, via scripts/wallpaper.sh) and only
+# call `matugen image` for the color scheme, so no [config.wallpaper] here.
+
+[templates.niri]
+input_path = "templates/niri-colors.kdl"
+output_path = "~/.config/niri/local/colors.kdl"
+
+[templates.waybar]
+input_path = "templates/waybar-colors.css"
+output_path = "~/.config/waybar/colors.css"
+
+[templates.waybar-config]
+input_path = "templates/waybar-config.jsonc"
+output_path = "~/.config/waybar/config.jsonc"
+
+[templates.swaync]
+input_path = "templates/swaync-colors.css"
+output_path = "~/.config/swaync/colors.css"
+
+[templates.gtklock-config]
+input_path = "templates/gtklock-config.ini"
+output_path = "~/.config/gtklock/config.ini"
+
+[templates.gtklock-colors]
+input_path = "templates/gtklock-colors.css"
+output_path = "~/.config/gtklock/colors.css"
+
+[templates.gtk3]
+input_path = "templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/gtk.css"
+
+[templates.gtk4]
+input_path = "templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/gtk.css"
+# GTK only reads gtk.css once at startup; SIGUSR2 can't reload it, so these
+# need a real restart. protonvpn-app also doesn't reliably re-register its
+# tray icon after waybar restarts, so it's restarted here too. Only one of
+# the two (identical) gtk3/gtk4 templates needs this.
+post_hook = "pkill -x waybar; pkill -x swaync; pkill -x nautilus; pkill -x protonvpn-app; setsid waybar >/dev/null 2>&1 & setsid swaync >/dev/null 2>&1 & setsid nautilus --gapplication-service >/dev/null 2>&1 & setsid protonvpn-app --start-minimized >/dev/null 2>&1 &"
+
+[templates.fuzzel]
+input_path = "templates/fuzzel.ini"
+output_path = "~/.config/fuzzel/fuzzel.ini"
+
+[templates.starship]
+input_path = "templates/starship.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.fish]
+input_path = "templates/fish-colors.fish"
+output_path = "~/.config/fish/conf.d/matugen-colors.fish"
+
+[templates.ghostty]
+input_path = "templates/ghostty-theme"
+output_path = "~/.config/ghostty/themes/matugen"
+# ghostty runs as a single background instance (gtk-single-instance) that only
+# reads config/theme files once at startup, so new windows won't pick up a
+# regenerated theme on their own. Trigger its D-Bus reload-config action
+# instead of expecting a restart.
+post_hook = "gdbus call --session --dest com.mitchellh.ghostty --object-path /com/mitchellh/ghostty --method org.gtk.Actions.Activate reload-config [] {} || true"
+
+[templates.swayosd]
+input_path = "templates/swayosd-style.css"
+output_path = "~/.config/swayosd/style.css"
+post_hook = "pkill -x swayosd-server; setsid swayosd-server >/dev/null 2>&1 &"
+
+[templates.zed]
+input_path = "templates/zed-theme.json"
+output_path = "~/.config/zed/themes/matugen-theme.json"
