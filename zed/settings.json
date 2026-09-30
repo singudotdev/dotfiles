@@ -1,5 +1,6 @@
 {
   "edit_predictions": {
+    "allow_data_collection": "no",
     "provider": "copilot",
     "copilot": {
       "prediction_debounce": 100
