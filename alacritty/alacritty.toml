@@ -1,0 +1,45 @@
+# Matugen color generation (see matugen/templates/alacritty-colors.toml).
+# Alacritty watches imported files too, so a regenerated scheme applies to
+# open windows without a reload hook.
+[general]
+import = ["~/.config/alacritty/matugen.toml"]
+live_config_reload = true
+
+# Font Configuration (same family as fuzzel; Nerd glyphs for starship)
+[font]
+normal = { family = "Hack Nerd Font" }
+size = 12
+
+# Window Configuration
+[window]
+decorations = "None"
+padding = { x = 12, y = 12 }
+dynamic_padding = true
+opacity = 0.92
+blur = true
+
+# Cursor Configuration
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+# Scrollback
+[scrolling]
+history = 3023
+
+# Terminal features
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = false
+
+# Key bindings for common actions
+[keyboard]
+bindings = [
+    { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" },
+    { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Key0", mods = "Control", action = "ResetFontSize" },
+    { key = "Enter", mods = "Shift", chars = "\n" },
+]

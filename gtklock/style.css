@@ -1,0 +1,69 @@
+@import url("file:///home/singu/.config/gtklock/colors.css");
+
+* {
+    font-family: "Hack Nerd Font", sans-serif;
+}
+
+window {
+    background-size: cover;
+    background-position: center;
+    background-color: @bg;
+}
+
+#locked-label {
+    color: @accent;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+#clock-label {
+    color: @fg;
+    font-size: 72px;
+    font-weight: bold;
+}
+
+#date-label {
+    color: @fg;
+    font-size: 18px;
+}
+
+#input-label {
+    color: @fg;
+}
+
+#input-field,
+#input-field:focus,
+#input-field:hover {
+    background-color: alpha(@bg, 0.85);
+    background-image: none;
+    color: @fg;
+    caret-color: @accent;
+    border: 1px solid @accent;
+    border-radius: 2px;
+    padding: 8px;
+    box-shadow: none;
+    outline: none;
+}
+
+#unlock-button,
+#unlock-button:hover,
+#unlock-button:active,
+#unlock-button.suggested-action {
+    background-color: @accent;
+    background-image: none;
+    color: @bg;
+    border: none;
+    border-radius: 2px;
+    padding: 6px 16px;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#warning-label {
+    color: @urgent;
+}
+
+#error-label {
+    color: @urgent;
+}

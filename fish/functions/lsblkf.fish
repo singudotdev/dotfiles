@@ -1,0 +1,3 @@
+function lsblkf --wraps='lsblk -o NAME,FSTYPE,FSVER,LABEL,FSAVAIL,FSUSE%,MOUNTPOINTS' --description 'alias lsblkf=lsblk -o NAME,FSTYPE,FSVER,LABEL,FSAVAIL,FSUSE%,MOUNTPOINTS'
+    lsblk -o NAME,FSTYPE,FSVER,LABEL,FSAVAIL,FSUSE%,MOUNTPOINTS $argv
+end
