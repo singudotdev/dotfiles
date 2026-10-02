@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1B2A,100:1B263B&height=180&section=header&text=dotfiles&fontSize=44&fontColor=64FFDA&fontAlignY=35&fontFamily=Courier%20New&desc=Arch%20Linux%20%C2%B7%20niri%20%C2%B7%20Claude%20Code&descAlignY=58&descSize=16&descColor=8892B0&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1B2A,100:1B263B&height=180&section=header&text=dotfiles&fontSize=44&fontColor=64FFDA&fontAlignY=35&fontFamily=Courier%20New&desc=Arch%20Linux%20%C2%B7%20niri&descAlignY=58&descSize=16&descColor=8892B0&animation=fadeIn" width="100%"/>
 
 ![niri](https://img.shields.io/badge/niri-0D1B2A?style=for-the-badge)
 ![waybar](https://img.shields.io/badge/waybar-0D1B2A?style=for-the-badge)
