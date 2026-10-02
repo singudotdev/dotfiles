@@ -17,6 +17,7 @@
   "agent": {
     "default_profile": "write",
     "dock": "right",
+    "enable_feedback": false,
   },
   "base_keymap": "Zed",
   "diff_view_style": "split",
