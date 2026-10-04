@@ -2,7 +2,7 @@
 
 # `init.sh`
 
-One-time bootstrap, run right after a fresh [archinstall](https://wiki.archlinux.org/title/Archinstall) with [niri](https://github.com/YaLTeR/niri) as the compositor. It isn't meant to be re-run. Apart from one confirmation prompt it's non-interactive; what it installs and links is set by the arrays at the top of the script (`PACKAGES`, `CARGO_PACKAGES`, `FLATPAKS`, `AUR_PACKAGES`, `DOTFILE_LINKS`).
+One-time bootstrap, run right after a fresh [archinstall](https://wiki.archlinux.org/title/Archinstall) with [niri](https://github.com/YaLTeR/niri) as the compositor. It isn't meant to be re-run. Apart from one confirmation prompt it's non-interactive; what it installs and links is set by the arrays at the top of the script (`PACKAGES`, `REDUNDANT_PACKAGES`, `CARGO_PACKAGES`, `FLATPAKS`, `AUR_PACKAGES`, `DOTFILE_LINKS`).
 
 > [!WARNING]
 > `init.sh` installs packages system-wide, writes sudoers drop-ins, replaces existing configs/symlinks under `~/.config` (backing up the previous file first), and reboots your machine at the end. It's intended for a **fresh** Arch install right after `archinstall` — review the script before running it on an existing system.
@@ -60,9 +60,14 @@ cd dotfiles
 
 16. **Disable IPv6** — writes `/etc/sysctl.d/99-disable-ipv6.conf` (`net.ipv6.conf.{all,default,lo}.disable_ipv6 = 1`) and applies it with `sysctl --system`.
 
-17. **Reboot** — after a 5-second countdown (`Ctrl+C` cancels). On the first login, niri's `spawn-at-startup` entries ([`niri/local/autostart.kdl`](../niri/local/autostart.kdl)) start waybar, swayosd, the wallpaper daemon and the cliphist watchers; systemd starts swaync; matugen generates the first color scheme.
+17. **Remove redundant packages** — `pacman -Rns` on whichever packages in `REDUNDANT_PACKAGES` are installed (pacman aborts if any listed package is missing, so absent ones are filtered out first). archinstall and niri's optional deps pull these in alongside the tools this setup uses instead:
+    - `mako` — notifications are handled by swaync
+    - `swaylock` — the lock screen is gtklock
+    - `nano` — `EDITOR` is Zed, with vim as the terminal fallback
 
-Package installation, rustup and the sudoers setup abort the script on failure. Everything else (Flatpaks, cargo crates, AUR builds, Claude Code) only warns and continues.
+18. **Reboot** — after a 5-second countdown (`Ctrl+C` cancels). On the first login, niri's `spawn-at-startup` entries ([`niri/local/autostart.kdl`](../niri/local/autostart.kdl)) start waybar, swayosd, the wallpaper daemon and the cliphist watchers; systemd starts swaync; matugen generates the first color scheme.
+
+Package installation, rustup and the sudoers setup abort the script on failure. Everything else (Flatpaks, cargo crates, AUR builds, Claude Code, redundant package removal) only warns and continues.
 
 ## After the reboot
 
