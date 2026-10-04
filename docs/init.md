@@ -64,6 +64,7 @@ cd dotfiles
     - `mako` — notifications are handled by swaync
     - `swaylock` — the lock screen is gtklock
     - `nano` — `EDITOR` is Zed, with vim as the terminal fallback
+    - `htop` — the system monitor is bottom (`btm`)
 
 18. **Reboot** — after a 5-second countdown (`Ctrl+C` cancels). On the first login, niri's `spawn-at-startup` entries ([`niri/local/autostart.kdl`](../niri/local/autostart.kdl)) start waybar, swayosd, the wallpaper daemon and the cliphist watchers; systemd starts swaync; matugen generates the first color scheme.
 

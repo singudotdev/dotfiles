@@ -38,6 +38,7 @@ REDUNDANT_PACKAGES=(
     mako                                                 # superseded by swaync
     swaylock                                             # superseded by gtklock
     nano                                                 # EDITOR is zed, vim as fallback
+    htop                                                 # superseded by bottom (btm)
 )
 
 # Flatpak applications (Flathub app IDs)
