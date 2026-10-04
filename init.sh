@@ -33,6 +33,13 @@ PACKAGES=(
     bluez-utils blueman                                  # bluetoothctl, GUI bluetooth manager
 )
 
+# Packages archinstall/niri pull in that duplicate what's above; removed at the end
+REDUNDANT_PACKAGES=(
+    mako                                                 # superseded by swaync
+    swaylock                                             # superseded by gtklock
+    nano                                                 # EDITOR is zed, vim as fallback
+)
+
 # Flatpak applications (Flathub app IDs)
 FLATPAKS=(
     com.github.tchx84.Flatseal
@@ -328,6 +335,22 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
 sudo sysctl --system > /dev/null
 ok "IPv6 disabled"
+
+# ============================================================
+# 15. Remove redundant packages
+# ============================================================
+step "Removing redundant packages"
+# pacman -R aborts on any package that isn't installed, so filter first.
+mapfile -t installed < <(pacman -Qq "${REDUNDANT_PACKAGES[@]}" 2>/dev/null || true)
+if [ "${#installed[@]}" -gt 0 ]; then
+    if sudo pacman -Rns --noconfirm "${installed[@]}"; then
+        ok "Removed: ${installed[*]}"
+    else
+        warn "Failed to remove: ${installed[*]}"
+    fi
+else
+    ok "No redundant packages installed"
+fi
 
 # ============================================================
 # Done
