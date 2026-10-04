@@ -18,7 +18,7 @@ PACKAGES=(
     alacritty starship fish                              # terminal/shell
     git vim zed                                          # dev tools
     element-desktop telegram-desktop                     # Matrix / Telegram clients
-    flatpak flatseal                                     # flatpak + permissions manager
+    flatpak                                              # Flatseal comes from Flathub below
     lib32-nvidia-utils steam                             # gaming
     podman                                               # containers
     gnome-keyring proton-vpn-gtk-app                     # secrets, VPN
